@@ -1,0 +1,49 @@
+
+server:
+  port: 9003
+
+#数据源配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource #Druid连接池
+    url: jdbc:mysql://localhost:3306/springboot-demo?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true&nullCatalogMeansCurrent=true
+    username: root #数据库用户名
+    password: root #数据库密码
+    driver-class-name: com.mysql.cj.jdbc.Driver #mysql驱动
+    initialSize: 10 #初始化连接池大小
+    minIdle: 10 #初始化最小连接池数量
+    maxActive: 100 #初始化最大连接池数量
+    maxWait: 6000 #配置获取连接等待超时的时间
+    timeBetweenEvictionRunsMills: 6000 #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    minEvictableIdleTimeMillis: 30000 #配置一个连接在池中最小生存的时间，单位是毫秒
+    validationQuery: SELECT 'x' #测试连接
+  redis:
+    host: 127.0.0.1
+    database: 0
+    password: redis
+    port: 6379
+    timeout: 60000
+  rabbitmq:
+    virtual-host: my_vhost
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: admin
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    #打印sql
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mapper:
+  identity: MYSQL # 配置主键自动增长(使用MYSQL原生方式)
+logging:
+  level:
+    com.cxt.demo: debug
+# 分页插件
+pagehelper:
+  reasonable: true
+  page-size-zero: true
+  params: pageNum=start;pageSize=limit
+  support-methods-arguments: true
+

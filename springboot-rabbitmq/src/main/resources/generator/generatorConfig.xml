@@ -1,0 +1,38 @@
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="useMapperCommentGenerator" value="true"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+<!--            定义自己集成的baseMapper-->
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+<!--            <property name="mappers" value="com.cxt.demo.tk.MyBaseMapper"/>-->
+            <property name="caseSensitive" value="true"/>
+            <property name="forceAnnotation" value="false"/>
+            <property name="lombok"  value="Data"/>
+            <property name="swagger"  value="true"/>
+            <!--<property name="needsData"  value="true"/>-->
+        </plugin>
+        <!--tk-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/springboot-demo?serverTimezone=UTC"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.cxt.demo.bean"
+                            targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources"/>
+
+        <javaClientGenerator targetPackage="com.cxt.demo.dao"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+
+                <table tableName="test_sys"><generatedKey column="id" sqlStatement="JDBC"/></table>
+    </context>
+</generatorConfiguration>

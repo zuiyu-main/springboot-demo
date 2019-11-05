@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springboot-elasticsearch" />
+        <module name="springboot-rabbitmq" />
+        <module name="springboot-tkmapper" />
+        <module name="springboot-elasticsearch7" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springboot-elasticsearch7x" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springboot-demo" options="-parameters" />
+      <module name="springboot-elasticsearch" options="-parameters" />
+      <module name="springboot-elasticsearch7" options="-parameters" />
+      <module name="springboot-elasticsearch7x" options="-parameters" />
+      <module name="springboot-rabbitmq" options="-parameters" />
+      <module name="springboot-tkmapper" options="-parameters" />
+    </option>
+  </component>
+</project>
