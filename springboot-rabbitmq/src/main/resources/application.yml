@@ -1,6 +1,6 @@
 
 server:
-  port: 9003
+  port: 9004
 
 #数据源配置
 spring:

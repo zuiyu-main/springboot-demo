@@ -12,5 +12,5 @@ spring:
         enabled: true
 logging:
   level:
-    com.cxt.demo: debug
+    com.cxt.demo: info
 
