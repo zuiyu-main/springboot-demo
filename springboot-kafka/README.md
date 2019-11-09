@@ -9,7 +9,7 @@
 
 * [apache kafka](https://kafka.apache.org/090/documentation.html#brokerconfigs)
 ## 推荐kafka-docker github clone下来进入文件夹修改配置启动即可
-#### 启动文件内容请参考resources/docker 文件夹，摘抄自docker-kafka github
+#### 启动文件内容请参考resources/docker 文件夹，摘抄自kafka-docker github
 ####  启动流程1
 ```shell script
 git clone https://github.com/wurstmeister/kafka-docker

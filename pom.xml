@@ -23,6 +23,7 @@
     <module>springboot-elasticsearch7</module>
     <module>springboot-tkmapper</module>
     <module>springboot-rabbitmq</module>
+    <module>springboot-shiro</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
