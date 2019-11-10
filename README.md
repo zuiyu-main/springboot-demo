@@ -6,3 +6,4 @@
 * SpringBoot+tkmapper
 * SpringBoot+rabbitmq
 * SpringBoot+kafka
+* SpringBoot+shiro
