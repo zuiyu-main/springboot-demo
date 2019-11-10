@@ -41,7 +41,7 @@ public class TestController {
         Assert.isTrue(!subject.isAuthenticated());
 
         // login the subject with a username / password
-        UsernamePasswordToken token = new UsernamePasswordToken("tz", "test123");
+        UsernamePasswordToken token = new UsernamePasswordToken("joe.coder", "password");
         subject.login(token);
 
         // joe.coder has the "user" role
@@ -76,4 +76,5 @@ public class TestController {
     private void initStaticSecurityManager() {
         SecurityUtils.setSecurityManager(securityManager);
     }
+
 }

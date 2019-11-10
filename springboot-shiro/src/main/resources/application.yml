@@ -1,3 +1,31 @@
+server:
+  port: 9006
+
+#数据源配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource #Druid连接池
+    url: jdbc:mysql://localhost:3306/springboot-demo?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true&nullCatalogMeansCurrent=true
+    username: root #数据库用户名
+    password: root #数据库密码
+    driver-class-name: com.mysql.cj.jdbc.Driver #mysql驱动
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    #打印sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mapper:
+  identity: MYSQL # 配置主键自动增长(使用MYSQL原生方式)
 logging:
   level:
     com.tz.springbootshiro: info
+# 分页插件
+pagehelper:
+  reasonable: true
+  page-size-zero: true
+  params: pageNum=start;pageSize=limit
+  support-methods-arguments: true

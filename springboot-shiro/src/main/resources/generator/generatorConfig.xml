@@ -8,8 +8,8 @@
 
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
 <!--            定义自己集成的baseMapper-->
-            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
-<!--            <property name="mappers" value="com.cxt.demo.tk.MyBaseMapper"/>-->
+<!--            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>-->
+            <property name="mappers" value="com.tz.springbootshiro.tk.MyBaseMapper"/>
             <property name="caseSensitive" value="true"/>
             <property name="forceAnnotation" value="false"/>
             <property name="lombok"  value="Data"/>
@@ -23,16 +23,19 @@
                         password="root">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.tz.tkmapper.bean"
+        <javaModelGenerator targetPackage="com.tz.springbootshiro.bean"
                             targetProject="src/main/java"/>
 
         <sqlMapGenerator targetPackage="mapper"
                          targetProject="src/main/resources"/>
 
-        <javaClientGenerator targetPackage="com.tz.tkmapper.dao"
+        <javaClientGenerator targetPackage="com.tz.springbootshiro.dao"
                              targetProject="src/main/java"
                              type="XMLMAPPER"/>
-
-                <table tableName="test_sys"><generatedKey column="id" sqlStatement="JDBC"/></table>
+        <table tableName="sys_permission"><generatedKey column="id" sqlStatement="JDBC"/></table>
+        <table tableName="sys_role"><generatedKey column="id" sqlStatement="JDBC"/></table>
+        <table tableName="sys_role_permission"><generatedKey column="id" sqlStatement="JDBC"/></table>
+        <table tableName="sys_user"><generatedKey column="id" sqlStatement="JDBC"/></table>
+        <table tableName="sys_user_role"><generatedKey column="id" sqlStatement="JDBC"/></table>
     </context>
 </generatorConfiguration>

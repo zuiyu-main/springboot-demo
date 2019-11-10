@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>登录</title>
+
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+<script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../static/js/vector.js"></script>
+
+</head>
+<body>
+
+<div id="container">
+	<div id="output">
+		<div class="containerT">
+			<h1>用户登录</h1>
+			<form class="form" id="entry_form" >
+				<input type="text" placeholder="用户名" id="entry_name" value="admin">
+				<input type="password" placeholder="密码" id="entry_password" value="123456">
+				<button type="button" id="entry_btn" >登录</button>
+				<div id="prompt" class="prompt"></div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        Victor("container", "output");   //登录背景函数
+        $("#entry_name").focus();
+        $(document).keydown(function(event){
+            if(event.keyCode==13){
+                $("#entry_btn").click();
+            }
+        });
+    });
+	$("#entry_btn").click(function(){
+			console.log("登录信息",$("#entry_name").attr("value"))
+		var data = {
+				userName: $("#entry_name").attr("value"),
+				password: $("#entry_password").attr("value")
+		}
+		$.ajax({
+			//请求方式
+			type : "POST",
+			//请求的媒体类型
+			// contentType: "application/json;charset=UTF-8",
+			//请求地址
+			url : "http://127.0.0.1:9006/index",
+			//数据，json字符串
+			data : data,
+			//请求成功
+			success : function(result) {
+				console.log(result);
+			},
+			//请求失败，包含具体的错误信息
+			error : function(e){
+				console.log(e.status);
+				console.log(e.responseText);
+			}
+		});
+	});
+</script>
+<div style="text-align:center;">
+</div>
+</body>
+</html>

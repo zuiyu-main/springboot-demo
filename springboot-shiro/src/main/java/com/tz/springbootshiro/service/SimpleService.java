@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author tz
  * @Classname SimpleService
- * @Description
+ * @Description 测试接口访问权限，可读可写
  * @Date 2019-11-09 11:50
  */
 @Slf4j
