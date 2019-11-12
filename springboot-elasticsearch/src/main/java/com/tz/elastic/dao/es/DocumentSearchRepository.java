@@ -1,6 +1,6 @@
 package com.tz.elastic.dao.es;
 
-import com.tz.elastic.bean.es.ESDocument;
+import com.tz.elastic.bean.es.EsDocument;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  * @Date 2019-07-20 09:23
  */
 @Repository
-public interface DocumentSearchRepository extends ElasticsearchRepository<ESDocument,String> {
+public interface DocumentSearchRepository extends ElasticsearchRepository<EsDocument,String> {
 }

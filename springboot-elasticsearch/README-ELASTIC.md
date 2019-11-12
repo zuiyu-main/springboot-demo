@@ -376,3 +376,6 @@ NoNodeAvailableException[None of the configured nodes are available: [{#transpor
 博客地址
 
 【https://blog.csdn.net/C1041067258/article/details/97035765】
+* 过滤显示字段类似mysql select id
+        FetchSourceFilter fetchSourceFilter = new FetchSourceFilter(null, new String[]{"permission"});  //查询结果不返回content
+        new NativeSearchQueryBuilder().withSourceFilter(fetchSourceFilter)

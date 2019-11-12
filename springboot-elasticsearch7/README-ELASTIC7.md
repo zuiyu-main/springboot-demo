@@ -1,5 +1,6 @@
-# springboot-demo
-基于springboot后台框架，涉及技术，通用mapper，shiro，mysql，redis
+
+* term学习
+[term学习官网资料](https://www.elastic.co/guide/cn/elasticsearch/guide/current/_finding_multiple_exact_values.html)
 ## es模块
 
 最近在学习es，起码要先有个es环境吧，然后再是整合到代码中使用一下，毕竟只有实践才会有深刻的记忆，这就是所谓的经验啊，下面开始吧，本文分两部分，第一部分配置es环境，第二部分整合到springboot中进行简单的操作，本人也是初次学习，如有错误欢迎指出修正，

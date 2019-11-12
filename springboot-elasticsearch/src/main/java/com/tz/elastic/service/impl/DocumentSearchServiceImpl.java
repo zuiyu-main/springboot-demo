@@ -1,7 +1,7 @@
 package com.tz.elastic.service.impl;
 
 
-import com.tz.elastic.bean.es.ESDocument;
+import com.tz.elastic.bean.es.EsDocument;
 import com.tz.elastic.dao.es.DocumentSearchRepository;
 import com.tz.elastic.service.DocumentSearchService;
 import org.elasticsearch.search.sort.SortBuilders;
@@ -33,8 +33,8 @@ public class DocumentSearchServiceImpl implements DocumentSearchService {
     private ElasticsearchTemplate elasticsearchTemplate;
 
     @Override
-    public ESDocument getDocumentById(String id) {
-        ESDocument country = documentSearchRepository.findById(id).orElse(new ESDocument("6","6","6"));
+    public EsDocument getDocumentById(String id) {
+        EsDocument country = documentSearchRepository.findById(id).orElse(new EsDocument("6","6","6"));
         return country;
     }
 
@@ -43,23 +43,23 @@ public class DocumentSearchServiceImpl implements DocumentSearchService {
     public void deleteDocumentById(String id) {
         SearchQuery query = new NativeSearchQueryBuilder().withQuery(boolQuery()
                 .must(termQuery("id",id)).must(termQuery("name","name1"))).build();
-        List<ESDocument> esDocuments = elasticsearchTemplate.queryForList(query, ESDocument.class);
+        List<EsDocument> esDocuments = elasticsearchTemplate.queryForList(query, EsDocument.class);
         System.out.println(esDocuments.toString());
         documentSearchRepository.deleteById(id);
     }
 
 
     @Override
-    public void saveDocument(List<ESDocument> ESDocuments) {
+    public void saveDocument(List<EsDocument> ESDocuments) {
         documentSearchRepository.saveAll(ESDocuments);
     }
 
 
 
     @Override
-    public List<ESDocument> getDocumentsByNameOrderByCreateOn(String name, String
+    public List<EsDocument> getDocumentsByNameOrderByCreateOn(String name, String
             projectId, String orderField)  {
-        List<ESDocument> ESDocuments = new ArrayList<>();
+        List<EsDocument> ESDocuments = new ArrayList<>();
         try {
             SearchQuery searchQuery = new NativeSearchQueryBuilder()
                     .withQuery(matchQuery("name", name))
@@ -68,7 +68,7 @@ public class DocumentSearchServiceImpl implements DocumentSearchService {
 //                    .withSort(new FieldSortBuilder(orderField).order(SortOrder.DESC))
                     .build();
             ESDocuments = elasticsearchTemplate.queryForList(searchQuery,
-                    ESDocument.class);
+                    EsDocument.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,8 +76,8 @@ public class DocumentSearchServiceImpl implements DocumentSearchService {
     }
 
     @Override
-    public void save(ESDocument esDocument) {
-        ESDocument save = documentSearchRepository.save(esDocument);
+    public void save(EsDocument esDocument) {
+        EsDocument save = documentSearchRepository.save(esDocument);
         System.out.println(save.toString());
     }
 
@@ -88,7 +88,7 @@ public class DocumentSearchServiceImpl implements DocumentSearchService {
 
     @Override
     public void getById(String id) {
-        ESDocument esDocument = documentSearchRepository.findById(id).orElse(new ESDocument());
+        EsDocument esDocument = documentSearchRepository.findById(id).orElse(new EsDocument());
         System.out.println(esDocument.toString());
 
     }
@@ -96,7 +96,7 @@ public class DocumentSearchServiceImpl implements DocumentSearchService {
     @Override
     public void getByName(String name, String projectId) {
         SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("name",name)).withQuery(matchQuery("projectId",projectId)).build();
-        List<ESDocument> esDocuments = elasticsearchTemplate.queryForList(searchQuery, ESDocument.class);
+        List<EsDocument> esDocuments = elasticsearchTemplate.queryForList(searchQuery, EsDocument.class);
         esDocuments.forEach(e-> System.out.println(e.toString()));
     }
 

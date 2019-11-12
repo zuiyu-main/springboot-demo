@@ -6,24 +6,23 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
+import java.util.List;
 
 /**
  * @author tz
- * @Classname ESDocument
- * @Description es bean
- * @Date 2019-07-20 09:21
+ * @Classname TestDocument
+ * @Description
+ * @Date 2019-11-12 16:24
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(indexName = "poms", type = "content")
-public class ESDocument {
+@Document(indexName = "test",type = "test")
+public class TestDocument {
     @Id
     private String id;
-
-    @Field(analyzer = "ik_smart", searchAnalyzer = "ik_smart")
-    private String name;
-
-    private String projectId;
-
+    @Field(type = FieldType.Auto)
+    private List<String> permission;
 }

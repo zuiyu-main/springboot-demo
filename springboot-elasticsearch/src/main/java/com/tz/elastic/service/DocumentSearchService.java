@@ -1,7 +1,8 @@
 package com.tz.elastic.service;
 
 
-import com.tz.elastic.bean.es.ESDocument;
+
+import com.tz.elastic.bean.es.EsDocument;
 
 import java.util.List;
 
@@ -12,21 +13,21 @@ import java.util.List;
  * @Date 2019-07-20 09:24
  */
 public interface DocumentSearchService {
-    ESDocument getDocumentById(String id) ;
+    EsDocument getDocumentById(String id) ;
 
 
     void deleteDocumentById(String id);
 
 
 
-    void saveDocument(List<ESDocument> ESDocuments);
+    void saveDocument(List<EsDocument> ESDocuments);
 
 
 
-    List<ESDocument> getDocumentsByNameOrderByCreateOn(String name,
+    List<EsDocument> getDocumentsByNameOrderByCreateOn(String name,
                                                        String projectId,
                                                        String orderField);
-    void save(ESDocument esDocument);
+    void save(EsDocument esDocument);
     void delete(String id);
     void getById(String id);
     void getByName(String name, String projectId);
