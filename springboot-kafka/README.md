@@ -56,11 +56,16 @@ docker-compose up -d
 另一种解决就是配置一下连接端口
 ##### 解决
 * 第一种配置方式配置
+```shell script
    KAFKA_LISTENERS: PLAINTEXT://:9092
    KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.1.123:9092
+```
 此处是新版配置，ip最好不要写localhost和127.0.0.1
 * 第二种就是配置host和port
+```shell script
 KAFKA_ADVERTISED_HOST_NAME: 192.168.1.123
+
+```
 advertised.port 指定也没有生效，后续有人测试生效可以提交pr，第二种方式指定hostname之后java连接使用配置文件中默认生成的端口
 端口查看方式，一种是进入容器
 ```shell script

@@ -25,4 +25,5 @@ public class TestDocument {
     private String id;
     @Field(type = FieldType.Auto)
     private List<String> permission;
+    private String title;
 }
