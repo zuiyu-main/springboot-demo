@@ -1,0 +1,18 @@
+server:
+  port: 9011
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource #Druid连接池
+    url:  jdbc:p6spy:mysql://localhost:3306/springboot-demo?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true&nullCatalogMeansCurrent=true
+    username: root #数据库用户名
+    password: root #数据库密码
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+logging:
+  level:
+    com.tz.mybatisplus: debug
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)

@@ -10,6 +10,7 @@
         <module name="springboot-elasticsearch" />
         <module name="springboot-rabbitmq" />
         <module name="springboot-tkmapper" />
+        <module name="springboot-mybatis-plus" />
         <module name="springboot-elasticsearch7" />
         <module name="springboot-redis" />
         <module name="springboot-shiro" />
@@ -26,6 +27,7 @@
       <module name="springboot-elasticsearch7" options="-parameters" />
       <module name="springboot-elasticsearch7x" options="-parameters" />
       <module name="springboot-kafka" options="-parameters" />
+      <module name="springboot-mybatis-plus" options="-parameters" />
       <module name="springboot-rabbitmq" options="-parameters" />
       <module name="springboot-redis" options="-parameters" />
       <module name="springboot-shiro" options="-parameters" />

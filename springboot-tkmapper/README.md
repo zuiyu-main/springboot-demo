@@ -1,6 +1,5 @@
 # springboot-demo
-基于springboot后台框架，涉及技术，通用mapper，shiro，mysql，redis， elasticsearch 
-
+基于springboot后台框架，涉及技术，通用mapper  redis
 ## 测试sys表
 -----
 CREATE TABLE `test_sys` (
