@@ -24,6 +24,7 @@
     <module>springboot-tkmapper</module>
     <module>springboot-rabbitmq</module>
     <module>springboot-shiro</module>
+    <module>springboot-redis</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
