@@ -39,7 +39,7 @@
         });
     });
 	$("#entry_btn").click(function(){
-			console.log("登录信息",$("#entry_name").attr("value"))
+			// console.log("登录信息",$("#entry_name").attr("value"))
 		var data = {
 				userName: $("#entry_name").attr("value"),
 				password: $("#entry_password").attr("value")
@@ -50,12 +50,14 @@
 			//请求的媒体类型
 			// contentType: "application/json;charset=UTF-8",
 			//请求地址
-			url : "http://127.0.0.1:9006/index",
+			url : "http://127.0.0.1:9006/login",
 			//数据，json字符串
 			data : data,
 			//请求成功
 			success : function(result) {
-				console.log(result);
+				if(result.code === 500216){
+					 alert("登录成功，返回信息"+JSON.stringify(result))
+				}
 			},
 			//请求失败，包含具体的错误信息
 			error : function(e){
@@ -64,6 +66,7 @@
 			}
 		});
 	});
+
 </script>
 <div style="text-align:center;">
 </div>

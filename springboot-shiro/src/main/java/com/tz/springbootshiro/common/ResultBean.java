@@ -13,6 +13,7 @@ public class ResultBean<T> {
     private int code;
     private String msg;
     private T data;
+    private Integer total;
 
     /**
      *  成功时候的调用
@@ -28,16 +29,16 @@ public class ResultBean<T> {
         return new ResultBean<T>(codeMsg);
     }
 
-    private ResultBean(T data) {
+    public ResultBean(T data) {
         this.data = data;
     }
 
-    private ResultBean(int code, String msg) {
+    public ResultBean(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    private ResultBean(CodeMsg codeMsg) {
+    public ResultBean(CodeMsg codeMsg) {
         if (codeMsg != null) {
             this.code = codeMsg.getCode();
             this.msg = codeMsg.getMsg();

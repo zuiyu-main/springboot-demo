@@ -20,18 +20,19 @@ public class CodeMsg {
 
     /*----------------通用的错误码------------------*/
 
-    public static CodeMsg SUCCESS = new CodeMsg(0, "success");
+    public static CodeMsg SUCCESS = new CodeMsg(200, "success");
     public static CodeMsg SERVER_ERROR = new CodeMsg(500100, "服务端异常");
     public static CodeMsg BIND_ERROR = new CodeMsg(500101, "参数校验异常：%s");
 
     /*----------------登录模块 5002XX--------------------*/
 
-    public static CodeMsg SESSION_ERROR = new CodeMsg(500210, "Session不存在或者已经失效");
-    public static CodeMsg PASSWORD_EMPTY = new CodeMsg(500211, "登录密码不能为空");
-    public static CodeMsg MOBILE_EMPTY = new CodeMsg(500212, "手机号不能为空");
-    public static CodeMsg MOBILE_ERROR = new CodeMsg(500213, "手机号格式错误");
-    public static CodeMsg MOBILE_NOT_EXIST = new CodeMsg(500214, "手机号不存在");
-    public static CodeMsg PASSWORD_ERROR = new CodeMsg(500215, "密码错误");
+    public static CodeMsg ACCOUNT_LOCK = new CodeMsg(500210, "账号已锁定");
+    public static CodeMsg PASSWORD_ERROR = new CodeMsg(500211, "密码不正确");
+    public static CodeMsg ACCOUNT_NOT_FOUND = new CodeMsg(500212, "未知账号");
+    public static CodeMsg ERROR_NUM_MORE = new CodeMsg(500213, "用户名密码错误次数过多");
+    public static CodeMsg USERNAME_PASSWORD_ERROR = new CodeMsg(500214, "用户名或密码不正确");
+    public static CodeMsg LOGIN_ERROR = new CodeMsg(500215, "登录失败");
+    public static CodeMsg LOGIN_SUCCESS = new CodeMsg(500216, "登录成功");
 
 
 

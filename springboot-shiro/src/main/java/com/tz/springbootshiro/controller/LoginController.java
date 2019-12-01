@@ -1,8 +1,11 @@
 package com.tz.springbootshiro.controller;
 
+import com.tz.springbootshiro.common.CodeMsg;
+import com.tz.springbootshiro.common.ResultBean;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,13 +17,24 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 public class LoginController {
+    /**
+     * shiro 跳转登录页面使用
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String defaultLogin() {
         return "/login/login";
     }
-    @RequestMapping(value = "/login", method = RequestMethod.POST,produces="text/plain;charset=UTF-8")
+
+    /**
+     * 登录页面表单提交使用
+     * @param username
+     * @param password
+     * @return
+     */
     @ResponseBody
-    public String login(@RequestParam("userName") String username, @RequestParam("password") String password) {
+    @PostMapping(value = "/login")
+    public ResultBean login(@RequestParam("userName") String username, @RequestParam("password") String password) {
         // 从SecurityUtils里边创建一个 subject
         Subject subject = SecurityUtils.getSubject();
         // 在认证提交前准备 token（令牌）
@@ -29,21 +43,21 @@ public class LoginController {
         try {
             subject.login(token);
         } catch (UnknownAccountException uae) {
-            return "未知账户";
+            return new ResultBean(CodeMsg.ACCOUNT_NOT_FOUND);
         } catch (IncorrectCredentialsException ice) {
-            return "密码不正确";
+            return new ResultBean(CodeMsg.PASSWORD_ERROR);
         } catch (LockedAccountException lae) {
-            return "账户已锁定";
+            return new ResultBean(CodeMsg.ACCOUNT_LOCK);
         } catch (ExcessiveAttemptsException eae) {
-            return "用户名或密码错误次数过多";
+            return new ResultBean(CodeMsg.ERROR_NUM_MORE);
         } catch (AuthenticationException ae) {
-            return "用户名或密码不正确！";
+            return new ResultBean(CodeMsg.USERNAME_PASSWORD_ERROR);
         }
         if (subject.isAuthenticated()) {
-            return "登录成功";
+            return new ResultBean(CodeMsg.LOGIN_SUCCESS);
         } else {
             token.clear();
-            return "登录失败";
+            return new ResultBean(CodeMsg.LOGIN_ERROR);
         }
     }
 }
