@@ -8,3 +8,5 @@
 * SpringBoot+rabbitmq
 * SpringBoot+kafka
 * SpringBoot+shiro
+* SpringBoot+redis
+* SpringBoot+security
