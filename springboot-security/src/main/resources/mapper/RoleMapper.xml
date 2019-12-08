@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tz.security.dao.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.tz.security.bean.Role" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+    <select id="getRolesByUserId" resultType="com.tz.security.bean.Role">
+      SELECT
+        *
+      FROM
+        role
+      WHERE
+        id IN ( SELECT role_id FROM user_role WHERE user_id = #{id} )
+    </select>
+</mapper>
