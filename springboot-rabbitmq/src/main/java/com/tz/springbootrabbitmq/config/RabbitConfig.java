@@ -1,9 +1,6 @@
 package com.tz.springbootrabbitmq.config;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -110,5 +107,16 @@ public class RabbitConfig {
     @Bean
     public Binding bindingB(){
         return BindingBuilder.bind(queueB()).to(defaultExchange()).with(RabbitConfig.ROUTINGKEY_B);
+    }
+    @Bean
+    public TopicExchange testExchange(){
+        return new TopicExchange("test");
+    }
+    @Bean Queue test3Queue(){
+        return new Queue("test.3",true);
+    }
+    @Bean
+    public Binding bindingTest(){
+        return BindingBuilder.bind(test3Queue()).to(testExchange()).with("test.*");
     }
 }

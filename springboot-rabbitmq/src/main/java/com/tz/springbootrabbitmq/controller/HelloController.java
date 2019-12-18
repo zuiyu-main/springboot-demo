@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author liBai
  * @Classname HelloController
@@ -18,8 +20,8 @@ public class HelloController {
     @Autowired
     private HelloService helloService;
     @RequestMapping("/hello")
-    public String hello(){
-        return helloService.sayHello();
+    public String hello(HttpServletRequest request){
+        return helloService.sayHello(request);
     }
     @RequestMapping("/get")
     public String getRedisInfo(){
@@ -29,4 +31,5 @@ public class HelloController {
     public String sendMsg(){
         return helloService.sendMsg();
     }
+
 }

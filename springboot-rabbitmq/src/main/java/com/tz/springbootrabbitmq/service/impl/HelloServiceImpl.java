@@ -1,5 +1,6 @@
 package com.tz.springbootrabbitmq.service.impl;
 
+import com.alibaba.druid.support.json.JSONUtils;
 import com.tz.springbootrabbitmq.bean.TestSys;
 import com.tz.springbootrabbitmq.dao.TestSysMapper;
 import com.tz.springbootrabbitmq.rabbit.MsgProducer;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -34,12 +36,13 @@ public class HelloServiceImpl implements HelloService {
     private RabbitTemplate rabbitTemplate;
 
     @Override
-    public String sayHello() {
-        rabbitTemplate.convertAndSend("test","test.*","我是测试消息消息，测试广播");
-        TestSys testSys = testSysMapper.selectByPrimaryKey("1");
-        redisTemplate.opsForValue().set("testSys",testSys.toString(),10,TimeUnit.MINUTES);
-        log.info("redis set value =" +testSys.toString());
-        return "redis set value success ，userName = "+testSys.getName();
+    public String sayHello(HttpServletRequest request) {
+        rabbitTemplate.convertAndSend("test","test.*", "test");
+//        TestSys testSys = testSysMapper.selectByPrimaryKey("1");
+//        redisTemplate.opsForValue().set("testSys",testSys.toString(),10,TimeUnit.MINUTES);
+//        log.info("redis set value =" +testSys.toString());
+//        return "redis set value success ，userName = "+testSys.getName();
+        return "success";
     }
 
     @Override
