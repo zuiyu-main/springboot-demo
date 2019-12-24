@@ -6,18 +6,30 @@ import com.tz.springbootrabbitmq.service.StompService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.converter.StringMessageConverter;
 import org.springframework.messaging.simp.stomp.StompHeaders;
+import org.springframework.messaging.simp.stomp.StompSession;
+import org.springframework.messaging.simp.stomp.StompSessionHandlerAdapter;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.WebSocketHttpHeaders;
 import org.springframework.web.socket.client.WebSocketClient;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 import org.springframework.web.socket.messaging.WebSocketStompClient;
+import org.springframework.web.socket.server.RequestUpgradeStrategy;
+import org.springframework.web.socket.server.standard.TomcatRequestUpgradeStrategy;
+import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
+import org.springframework.web.socket.sockjs.client.RestTemplateXhrTransport;
 import org.springframework.web.socket.sockjs.client.SockJsClient;
 import org.springframework.web.socket.sockjs.client.Transport;
 import org.springframework.web.socket.sockjs.client.WebSocketTransport;
+import sun.net.www.http.HttpClient;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
+import static java.util.Arrays.asList;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * @author tz
@@ -27,7 +39,8 @@ import java.util.List;
  */
 @Service
 public class StompServiceImpl implements StompService {
-    private static final String URL_TEMPLATE = "http://%s:%s/stomp";
+    // ws://127.0.0.1:15674/ws
+    private static final String URL_TEMPLATE = "ws://%s:%s/ws";
 
     @Value("${spring.rabbitmq.host}")
     private String host;
@@ -47,6 +60,8 @@ public class StompServiceImpl implements StompService {
     private String passCode = "admin";
 
     private String url;
+    WebSocketStompClient stompClient;
+
 
     @PostConstruct
     public void init()
@@ -63,7 +78,6 @@ public class StompServiceImpl implements StompService {
     @Override
     public <T> void connectAndSend(String dest, T toSend) {
         WebSocketClient client = new StandardWebSocketClient();
-
         List<Transport> transports = new ArrayList<>(1);
         transports.add(new WebSocketTransport( client) );
         //rabbitmq 3.7以后就别这么写了。直接new WebSocketStompClient(client)就行
@@ -82,11 +96,24 @@ public class StompServiceImpl implements StompService {
         StompHeaders sHeaders = new StompHeaders();
         sHeaders.add("login", this.login);
         sHeaders.add("passcode", this.passCode);
-
         //开始连接，回调连接上后发送stomp消息
         stompClient.connect(url, headers, sHeaders, sessionHandler);
 
         //要同步得到发送结果的话，用CountDownLatch来做或者connect结果的future对象做get
+
+    }
+
+    @Override
+    public void sendMsg() throws InterruptedException, ExecutionException, TimeoutException {
+
+        List<Transport> transports = new ArrayList<>(2);
+        transports.add(new WebSocketTransport(new StandardWebSocketClient()));
+        transports.add(new RestTemplateXhrTransport());
+
+        SockJsClient sockJsClient = new SockJsClient(transports);
+        sockJsClient.doHandshake(new MyWebSocketHandler(), "ws://127.0.0.1:9004/sockjs");
+
+
     }
 
 }

@@ -1,5 +1,8 @@
 package com.tz.springbootrabbitmq.service;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
 /**
  * @author tz
  * @Classname StompService
@@ -8,4 +11,5 @@ package com.tz.springbootrabbitmq.service;
  */
 public interface StompService {
     <T> void connectAndSend(String dest, T toSend);
+    void sendMsg() throws InterruptedException, ExecutionException, TimeoutException;
 }
