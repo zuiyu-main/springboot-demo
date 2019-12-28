@@ -19,6 +19,7 @@
         <option value="$PROJECT_DIR$/springboot-mybatis-plus/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-security/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-simple-security/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-stomp/pom.xml" />
       </list>
     </option>
   </component>

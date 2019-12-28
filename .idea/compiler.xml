@@ -7,14 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springboot-kafka" />
+        <module name="springboot-mybatis-plus" />
         <module name="springboot-elasticsearch" />
         <module name="springboot-simple-security" />
         <module name="springboot-rabbitmq" />
-        <module name="springboot-security" />
         <module name="springboot-tkmapper" />
-        <module name="springboot-mybatis-plus" />
+        <module name="springboot-security" />
         <module name="springboot-elasticsearch7" />
         <module name="springboot-redis" />
+        <module name="springboot-stomp" />
         <module name="springboot-shiro" />
       </profile>
     </annotationProcessing>
@@ -35,6 +36,7 @@
       <module name="springboot-security" options="-parameters" />
       <module name="springboot-shiro" options="-parameters" />
       <module name="springboot-simple-security" options="-parameters" />
+      <module name="springboot-stomp" options="-parameters" />
       <module name="springboot-tkmapper" options="-parameters" />
     </option>
   </component>

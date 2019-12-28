@@ -1,11 +1,8 @@
 package com.tz.springbootrabbitmq.service.impl;
 
-import com.alibaba.druid.support.json.JSONUtils;
-import com.tz.springbootrabbitmq.bean.TestSys;
 import com.tz.springbootrabbitmq.dao.TestSysMapper;
 import com.tz.springbootrabbitmq.rabbit.MsgProducer;
 import com.tz.springbootrabbitmq.service.HelloService;
-import com.tz.springbootrabbitmq.service.StompService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author liBai
@@ -30,8 +26,6 @@ public class HelloServiceImpl implements HelloService {
     private StringRedisTemplate redisTemplate;
     @Autowired
     private MsgProducer msgProducer;
-    @Autowired
-    private StompService stompService;
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
@@ -54,9 +48,9 @@ public class HelloServiceImpl implements HelloService {
     @Override
     public String sendMsg() {
         for(int i=0;i<10;i++){
-            msgProducer.sendMsg("第"+i+"条信息，来吧宝贝，尽情的消费吧");
+            rabbitTemplate.convertAndSend("test","#","test"+i);
+//            msgProducer.sendMsg("第"+i+"条信息，来吧宝贝，尽情的消费吧");
         }
-//        stompService.connectAndSend("/topic/test","{he:'hello'}");
         return "success";
     }
 }

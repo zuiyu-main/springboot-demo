@@ -8,3 +8,6 @@ https://www.cnblogs.com/selwynHome/p/9609298.html
 sockjs 配置，stomp配置参考
 [sockjs](https://docs.spring.io/spring-framework/docs/4.1.6.RELEASE/spring-framework-reference/html/websocket.html#websocket-fallback-sockjs-client)
 
+https://www.cnblogs.com/myitroad/p/9334141.html
+
+[构建](https://registry.hub.docker.com/_/rabbitmq/)

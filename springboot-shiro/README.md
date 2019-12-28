@@ -8,3 +8,8 @@
 ## 两个例子
 * shiro官网快速启动的demo
 * 自定义配置的shiro
+* 权限模型分析
+[权限设计模型分析](https://www.jianshu.com/p/ce0944b4a903)
+[RBAC为基础，分析设计思路](http://www.woshipm.com/pd/960810.html)
+[权限系统是如何设计的](https://zhuanlan.zhihu.com/p/38414545)
+[RBAC3-0,1,2,](https://zhuanlan.zhihu.com/p/98559681)

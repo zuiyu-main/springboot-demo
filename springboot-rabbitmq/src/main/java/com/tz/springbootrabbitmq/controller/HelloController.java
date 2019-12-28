@@ -1,7 +1,6 @@
 package com.tz.springbootrabbitmq.controller;
 
 import com.tz.springbootrabbitmq.service.HelloService;
-import com.tz.springbootrabbitmq.service.StompService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +21,6 @@ import java.util.concurrent.TimeoutException;
 public class HelloController {
     @Autowired
     private HelloService helloService;
-    @Autowired
-    private StompService stompService;
     @RequestMapping("/hello")
     public String hello(HttpServletRequest request){
         return helloService.sayHello(request);
@@ -34,8 +31,11 @@ public class HelloController {
     }
     @GetMapping("/sendMsg")
     public String sendMsg() throws InterruptedException, ExecutionException, TimeoutException {
-        stompService.sendMsg();
-        return "helloService.sendMsg()";
+        return helloService.sendMsg();
     }
+
+
+
+
 
 }
