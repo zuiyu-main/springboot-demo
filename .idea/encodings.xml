@@ -3,15 +3,27 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-elasticsearch" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-elasticsearch/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-elasticsearch7" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-elasticsearch7/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-fdfs/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-kafka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-kafka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-mybatis-plus" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-mybatis-plus/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-rabbitmq" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-rabbitmq/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-redis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-redis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-security" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-security/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-shiro" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-shiro/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-simple-security" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-simple-security/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-stomp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-stomp/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-tkmapper" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-tkmapper/src/main/java" charset="UTF-8" />
   </component>
 </project>

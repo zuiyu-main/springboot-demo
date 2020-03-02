@@ -7,6 +7,6 @@
 * SpringBoot+tkmapper
 * SpringBoot+rabbitmq
 * SpringBoot+kafka
-* SpringBoot+shiro
+* SpringBoot+shiro（REAMDME.md RBAC 参考链接）
 * SpringBoot+redis
 * SpringBoot+security

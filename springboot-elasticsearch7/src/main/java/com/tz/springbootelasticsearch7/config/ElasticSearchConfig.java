@@ -30,6 +30,7 @@ public class ElasticSearchConfig {
 //    public TransportClient transportClient() throws UnknownHostException {
 //        TransportClient client = new PreBuiltXPackTransportClient(Settings.builder()
 //                .put("cluster.name", "docker-cluster")
+//    账号elastic 密码changeme
 //                .put("xpack.security.user", "elastic:changeme")
 //                .build())
 //                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("127.0.0.1"), 9300));

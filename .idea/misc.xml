@@ -4,6 +4,9 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -20,6 +23,7 @@
         <option value="$PROJECT_DIR$/springboot-security/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-simple-security/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-stomp/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-fdfs/pom.xml" />
       </list>
     </option>
   </component>

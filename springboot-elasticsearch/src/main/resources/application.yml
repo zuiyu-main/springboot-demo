@@ -6,11 +6,11 @@ server:
 spring:
   data:
     elasticsearch:
-      cluster-name: elasticsearch-cluster
+      cluster-name: es-docker-cluster
       cluster-nodes: 127.0.0.1:9300
-      repositories:
-        enabled: true
+#      repositories:
+#        enabled: true
 logging:
   level:
-    com.cxt.demo: info
+    com.tz.elastic: info
 

@@ -13,3 +13,6 @@
 [RBAC为基础，分析设计思路](http://www.woshipm.com/pd/960810.html)
 [权限系统是如何设计的](https://zhuanlan.zhihu.com/p/38414545)
 [RBAC3-0,1,2,](https://zhuanlan.zhihu.com/p/98559681)
+[pm设计RBAC分析](http://www.woshipm.com/pd/1150093.html)
+[apache directory](http://directory.apache.org/fortress/user-guide/1.3-what-rbac-is.html)
+[角色权限设计的100中解法](http://www.woshipm.com/pd/1214616.html)

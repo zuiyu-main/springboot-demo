@@ -28,6 +28,7 @@
     <module>springboot-mybatis-plus</module>
     <module>springboot-security</module>
     <module>springboot-simple-security</module>
+    <module>springboot-fdfs</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
