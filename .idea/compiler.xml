@@ -6,18 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springboot-mybatis-plus" />
-        <module name="springboot-stomp" />
-        <module name="springboot-rabbitmq" />
-        <module name="springboot-security" />
         <module name="springboot-kafka" />
-        <module name="springboot-tkmapper" />
-        <module name="springboot-elasticsearch7" />
-        <module name="springboot-simple-security" />
-        <module name="springboot-shiro" />
+        <module name="springboot-mybatis-plus" />
         <module name="springboot-elasticsearch" />
-        <module name="springboot-redis" />
+        <module name="springboot-simple-security" />
+        <module name="springboot-rabbitmq" />
         <module name="springboot-fdfs" />
+        <module name="springboot-security" />
+        <module name="springboot-elasticsearch7" />
+        <module name="springboot-redis" />
+        <module name="springboot-tkmapper" />
+        <module name="springboot-stomp" />
+        <module name="springboot-shiro" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

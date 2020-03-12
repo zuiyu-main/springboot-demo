@@ -2,31 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8687e78c-52d7-4528-bed6-9d22ae99993a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/springboot-elasticsearch/src/main/java/com/tz/elastic/bean/es/TestDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-elasticsearch/src/main/java/com/tz/elastic/dao/es/TestDemoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/src/main/java/com/tz/fdfs/FdfsApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/src/main/java/com/tz/fdfs/FileUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/src/main/resources/fastdfs-client.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/src/main/resources/fdfs_client.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-fdfs/src/test/java/com/tz/fdfs/FdfsApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-simple-security/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-simple-security/src/main/java/com/tz/serurity/simple/config/CatFilterConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-simple-security/src/main/resources/META-INF/app.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-elasticsearch/src/main/java/com/tz/elastic/ElasticApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-elasticsearch/src/main/java/com/tz/elastic/ElasticApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-elasticsearch/src/main/java/com/tz/elastic/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-elasticsearch/src/main/java/com/tz/elastic/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-elasticsearch/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-elasticsearch/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-elasticsearch7/src/main/java/com/tz/springbootelasticsearch7/config/ElasticSearchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-elasticsearch7/src/main/java/com/tz/springbootelasticsearch7/config/ElasticSearchConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-shiro/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-shiro/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springboot-rabbitmq/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-rabbitmq/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springboot-rabbitmq/src/test/java/com/tz/springbootrabbitmq/SpringbootRabbitmqApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-rabbitmq/src/test/java/com/tz/springbootrabbitmq/SpringbootRabbitmqApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springboot-simple-security/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-simple-security/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +79,9 @@
         <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -180,7 +166,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ElasticApplication (1)">
+  <component name="RunManager" selected="Spring Boot.SimpleApplication">
     <configuration name="CodeGenerator" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.tz.mybatisplus.generator.CodeGenerator" />
       <module name="springboot-mybatis-plus" />
@@ -194,12 +180,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tz.fdfs.FileUtil" />
-      <module name="springboot-fdfs" />
+    <configuration name="SpringbootRabbitmqApplicationTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tz.springbootrabbitmq.SpringbootRabbitmqApplicationTests" />
+      <module name="springboot-rabbitmq" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.tz.fdfs.*" />
+          <option name="PATTERN" value="com.tz.springbootrabbitmq.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -239,7 +225,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebSocketTest.shouldReceiveAMessageFromTheServer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpringbootRabbitmqApplicationTests.shutdownTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springboot-rabbitmq" />
       <extension name="coverage">
         <pattern>
@@ -248,8 +234,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.tz.springbootrabbitmq" />
-      <option name="MAIN_CLASS_NAME" value="com.tz.springbootrabbitmq.WebSocketTest" />
-      <option name="METHOD_NAME" value="shouldReceiveAMessageFromTheServer" />
+      <option name="MAIN_CLASS_NAME" value="com.tz.springbootrabbitmq.SpringbootRabbitmqApplicationTests" />
+      <option name="METHOD_NAME" value="shutdownTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -354,10 +340,10 @@
     </configuration>
     <list>
       <item itemvalue="Application.CodeGenerator" />
-      <item itemvalue="Application.FileUtil" />
-      <item itemvalue="JUnit.WebSocketTest.shouldReceiveAMessageFromTheServer" />
+      <item itemvalue="Application.SpringbootRabbitmqApplicationTests" />
       <item itemvalue="JUnit.FdfsApplicationTests.contextLoads" />
       <item itemvalue="JUnit.ElasticApplicationTests.arrayInsertTest" />
+      <item itemvalue="JUnit.SpringbootRabbitmqApplicationTests.shutdownTest" />
       <item itemvalue="Spring Boot.ElasticApplication" />
       <item itemvalue="Spring Boot.TkmapperApplication" />
       <item itemvalue="Spring Boot.SpringbootElasticsearch7Application" />
@@ -374,11 +360,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SpringbootRabbitmqApplicationTests" />
+        <item itemvalue="JUnit.SpringbootRabbitmqApplicationTests.shutdownTest" />
         <item itemvalue="Spring Boot.ElasticApplication (1)" />
         <item itemvalue="JUnit.ElasticApplicationTests.arrayInsertTest" />
         <item itemvalue="JUnit.FdfsApplicationTests.contextLoads" />
-        <item itemvalue="Application.FileUtil" />
-        <item itemvalue="JUnit.WebSocketTest.shouldReceiveAMessageFromTheServer" />
       </list>
     </recent_temporary>
   </component>
@@ -391,6 +377,11 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
@@ -537,7 +528,17 @@
       <workItem from="1582684801060" duration="41000" />
       <workItem from="1582795829160" duration="19000" />
       <workItem from="1582857949643" duration="2000" />
-      <workItem from="1583118863854" duration="577000" />
+      <workItem from="1583118863854" duration="1918000" />
+      <workItem from="1583127782099" duration="1160000" />
+      <workItem from="1583129852046" duration="24000" />
+      <workItem from="1583131823703" duration="1045000" />
+      <workItem from="1583300843781" duration="14000" />
+      <workItem from="1583412463599" duration="365000" />
+      <workItem from="1583479112630" duration="207000" />
+      <workItem from="1583479343029" duration="795000" />
+      <workItem from="1583487660485" duration="1941000" />
+      <workItem from="1583537328632" duration="533000" />
+      <workItem from="1583539810883" duration="348000" />
     </task>
     <task id="LOCAL-00001" summary="springboot+kafka 最新版集成">
       <created>1573183475306</created>
@@ -651,7 +652,21 @@
       <option name="project" value="LOCAL" />
       <updated>1577530557036</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="整理项目整洁，添加fdfs（未测试）">
+      <created>1583119638732</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1583119638732</updated>
+    </task>
+    <task id="LOCAL-00018" summary="添加gitignore">
+      <created>1583119704947</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1583119704948</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -688,7 +703,9 @@
     <MESSAGE value="simple security demo commit" />
     <MESSAGE value="sockjs 配置" />
     <MESSAGE value="加入stomp，优化rabbitmq" />
-    <option name="LAST_COMMIT_MESSAGE" value="加入stomp，优化rabbitmq" />
+    <MESSAGE value="整理项目整洁，添加fdfs（未测试）" />
+    <MESSAGE value="添加gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加gitignore" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="117" key="#Project_Structure" timestamp="1581840478190">
@@ -703,54 +720,74 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="357" y="123" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/0.0.1440.900@0.0.1440.900" timestamp="1581843769370" />
-    <state x="182" y="37" key="CommitChangelistDialog2" timestamp="1583119638290">
+    <state x="182" y="37" key="CommitChangelistDialog2" timestamp="1583974779698">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="182" y="37" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1583119638290" />
+    <state x="182" y="37" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1583974779698" />
     <state width="472" height="466" key="DebuggerActiveHint" timestamp="1581842981093">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="472" height="466" key="DebuggerActiveHint/0.0.1440.900@0.0.1440.900" timestamp="1581842981093" />
-    <state width="1398" height="526" key="GridCell.Tab.0.bottom" timestamp="1582625874389">
+    <state width="958" height="315" key="GridCell.Tab.0.bottom" timestamp="1583543153694">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="526" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1582625874389" />
-    <state width="958" height="511" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1582624647342" />
-    <state width="1398" height="526" key="GridCell.Tab.0.center" timestamp="1582625874389">
+    <state width="958" height="315" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583543153694" />
+    <state width="958" height="315" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1583537860644" />
+    <state width="958" height="315" key="GridCell.Tab.0.center" timestamp="1583543153693">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="526" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1582625874389" />
-    <state width="958" height="511" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1582624647342" />
-    <state width="1398" height="526" key="GridCell.Tab.0.left" timestamp="1582625874388">
+    <state width="958" height="315" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583543153693" />
+    <state width="958" height="315" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1583537860642" />
+    <state width="958" height="315" key="GridCell.Tab.0.left" timestamp="1583543153693">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="526" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1582625874388" />
-    <state width="958" height="511" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1582624647341" />
-    <state width="1398" height="526" key="GridCell.Tab.0.right" timestamp="1582625874389">
+    <state width="958" height="315" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583543153693" />
+    <state width="958" height="315" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1583537860641" />
+    <state width="958" height="315" key="GridCell.Tab.0.right" timestamp="1583543153694">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="526" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1582625874389" />
-    <state width="958" height="511" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1582624647342" />
-    <state width="958" height="513" key="GridCell.Tab.1.bottom" timestamp="1582625874380">
+    <state width="958" height="315" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583543153694" />
+    <state width="958" height="315" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1583537860643" />
+    <state width="958" height="315" key="GridCell.Tab.1.bottom" timestamp="1583543153696">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="513" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1582625874380" />
-    <state width="958" height="511" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1582624647344" />
-    <state width="958" height="513" key="GridCell.Tab.1.center" timestamp="1582625874379">
+    <state width="958" height="315" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583543153696" />
+    <state width="958" height="315" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1583537860648" />
+    <state width="958" height="315" key="GridCell.Tab.1.center" timestamp="1583543153695">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="513" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1582625874379" />
-    <state width="958" height="511" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1582624647343" />
-    <state width="958" height="513" key="GridCell.Tab.1.left" timestamp="1582625874378">
+    <state width="958" height="315" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1583543153695" />
+    <state width="958" height="315" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1583537860646" />
+    <state width="958" height="315" key="GridCell.Tab.1.left" timestamp="1583543153695">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="513" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1582625874378" />
-    <state width="958" height="511" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1582624647343" />
-    <state width="958" height="513" key="GridCell.Tab.1.right" timestamp="1582625874379">
+    <state width="958" height="315" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1583543153695" />
+    <state width="958" height="315" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1583537860645" />
+    <state width="958" height="315" key="GridCell.Tab.1.right" timestamp="1583543153696">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="513" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1582625874379" />
-    <state width="958" height="511" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1582624647344" />
+    <state width="958" height="315" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1583543153696" />
+    <state width="958" height="315" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1583537860647" />
+    <state width="958" height="315" key="GridCell.Tab.2.bottom" timestamp="1583537860524">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="315" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583537681457" />
+    <state width="958" height="315" key="GridCell.Tab.2.bottom/0.23.1440.877@0.23.1440.877" timestamp="1583537860524" />
+    <state width="958" height="315" key="GridCell.Tab.2.center" timestamp="1583537860523">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="315" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1583537681457" />
+    <state width="958" height="315" key="GridCell.Tab.2.center/0.23.1440.877@0.23.1440.877" timestamp="1583537860523" />
+    <state width="958" height="315" key="GridCell.Tab.2.left" timestamp="1583537860522">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="315" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1583537681456" />
+    <state width="958" height="315" key="GridCell.Tab.2.left/0.23.1440.877@0.23.1440.877" timestamp="1583537860522" />
+    <state width="958" height="315" key="GridCell.Tab.2.right" timestamp="1583537860524">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="315" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1583537681457" />
+    <state width="958" height="315" key="GridCell.Tab.2.right/0.23.1440.877@0.23.1440.877" timestamp="1583537860524" />
     <state x="258" y="113" key="Maven.ArtifactSearchDialog" timestamp="1581840667813">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -759,14 +796,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="364" y="43" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1583119547319" />
-    <state x="320" y="191" key="Vcs.Push.Dialog.v2" timestamp="1583119640598">
+    <state x="320" y="191" key="Vcs.Push.Dialog.v2" timestamp="1583974733473">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="191" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1583119640598" />
-    <state x="509" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583119572881">
+    <state x="320" y="191" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1583974733473" />
+    <state x="509" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583974746347">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="509" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1583119572881" />
+    <state x="509" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1583974746347" />
     <state x="114" y="155" key="new project wizard" timestamp="1581840332245">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

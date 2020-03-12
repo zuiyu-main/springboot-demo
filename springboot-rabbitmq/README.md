@@ -11,3 +11,8 @@ sockjs 配置，stomp配置参考
 https://www.cnblogs.com/myitroad/p/9334141.html
 
 [构建](https://registry.hub.docker.com/_/rabbitmq/)
+
+# rabbitmq监听关闭时间
+[tcp 检测](https://www.rabbitmq.com/heartbeats.html#tcp-keepalives)
+[channel](https://www.rabbitmq.com/channels.html)
+[shutdown](https://www.rabbitmq.com/api-guide.html#shutdown)
