@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8687e78c-52d7-4528-bed6-9d22ae99993a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/springboot-simple-security/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-simple-security/src/main/java/com/tz/serurity/simple/config/CatFilterConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-simple-security/src/main/resources/META-INF/app.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="8687e78c-52d7-4528-bed6-9d22ae99993a" name="Default Changelist" comment="rabbitmq 监听关闭事件测试">
+      <change afterPath="$PROJECT_DIR$/springboot-fdfs/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-rabbitmq/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-rabbitmq/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-rabbitmq/src/test/java/com/tz/springbootrabbitmq/SpringbootRabbitmqApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-rabbitmq/src/test/java/com/tz/springbootrabbitmq/SpringbootRabbitmqApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-simple-security/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-simple-security/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -381,11 +375,6 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
                 <item name="Not Started" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
@@ -539,6 +528,7 @@
       <workItem from="1583487660485" duration="1941000" />
       <workItem from="1583537328632" duration="533000" />
       <workItem from="1583539810883" duration="348000" />
+      <workItem from="1583974635293" duration="278000" />
     </task>
     <task id="LOCAL-00001" summary="springboot+kafka 最新版集成">
       <created>1573183475306</created>
@@ -666,7 +656,21 @@
       <option name="project" value="LOCAL" />
       <updated>1583119704948</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="cat监控测试（未测试）">
+      <created>1583974712389</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1583974712389</updated>
+    </task>
+    <task id="LOCAL-00020" summary="rabbitmq 监听关闭事件测试">
+      <created>1583974821580</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1583974821580</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -705,7 +709,10 @@
     <MESSAGE value="加入stomp，优化rabbitmq" />
     <MESSAGE value="整理项目整洁，添加fdfs（未测试）" />
     <MESSAGE value="添加gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加gitignore" />
+    <MESSAGE value="cat监控测试（未测试）" />
+    <MESSAGE value="rabbitmq 监听关闭事件测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="rabbitmq 监听关闭事件测试" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="117" key="#Project_Structure" timestamp="1581840478190">
@@ -720,14 +727,18 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="357" y="123" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/0.0.1440.900@0.0.1440.900" timestamp="1581843769370" />
-    <state x="182" y="37" key="CommitChangelistDialog2" timestamp="1583974779698">
+    <state x="182" y="37" key="CommitChangelistDialog2" timestamp="1583974864896">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="182" y="37" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1583974779698" />
+    <state x="182" y="37" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1583974864896" />
     <state width="472" height="466" key="DebuggerActiveHint" timestamp="1581842981093">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="472" height="466" key="DebuggerActiveHint/0.0.1440.900@0.0.1440.900" timestamp="1581842981093" />
+    <state x="109" y="79" key="DiffContextDialog" timestamp="1583974802970">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="109" y="79" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1583974802970" />
     <state width="958" height="315" key="GridCell.Tab.0.bottom" timestamp="1583543153694">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -796,10 +807,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="364" y="43" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1583119547319" />
-    <state x="320" y="191" key="Vcs.Push.Dialog.v2" timestamp="1583974733473">
+    <state x="320" y="191" key="Vcs.Push.Dialog.v2" timestamp="1583974824268">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="191" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1583974733473" />
+    <state x="320" y="191" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1583974824268" />
     <state x="509" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583974746347">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
