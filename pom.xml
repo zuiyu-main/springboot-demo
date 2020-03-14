@@ -29,6 +29,7 @@
     <module>springboot-security</module>
     <module>springboot-simple-security</module>
     <module>springboot-fdfs</module>
+    <module>springboot-seaweedfs</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
