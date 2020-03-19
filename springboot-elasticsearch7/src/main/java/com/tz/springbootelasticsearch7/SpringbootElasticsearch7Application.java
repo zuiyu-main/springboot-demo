@@ -8,6 +8,7 @@ public class SpringbootElasticsearch7Application {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootElasticsearch7Application.class, args);
+
     }
 
 }
