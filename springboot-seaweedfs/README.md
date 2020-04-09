@@ -21,7 +21,7 @@ services:
     ports:
       - 8083:8080
       - 18080:18080
-    command: 'volume -max=5 -mserver="master:9333" -port=8080 -publicUrl="192.168.1.91:8888"'
+    command: 'volume -max=5 -mserver="master:9333" -port=8080 -publicUrl="127.0.0.1:8888"'
     depends_on:
       - master
     networks:
