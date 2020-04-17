@@ -1,7 +1,10 @@
 package com.tz.tkmapper.bean;
 
-import javax.persistence.*;
 import lombok.Data;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @Table(name = "test_sys")

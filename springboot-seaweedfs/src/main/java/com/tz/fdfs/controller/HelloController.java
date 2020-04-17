@@ -2,17 +2,12 @@ package com.tz.fdfs.controller;
 
 import com.tz.fdfs.config.SeaweedFileService;
 import lombok.extern.slf4j.Slf4j;
-import net.anumbrella.seaweedfs.core.FileTemplate;
 import net.anumbrella.seaweedfs.core.file.FileHandleStatus;
-import net.anumbrella.seaweedfs.core.http.StreamResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import springfox.documentation.spring.web.json.Json;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -40,5 +35,22 @@ public class HelloController {
         FileHandleStatus fileStatus = seaweedFileService.getFileStatus(fid, "JAVA核心知识点整理.pdf", "application/pdf");
         return fileStatus.toString();
     }
+
+    @RequestMapping("/delete")
+    public void delete(String fid) throws IOException {
+        seaweedFileService.deleteFile(fid);
+//        List<String> list = new ArrayList<>();
+//        list.add("4,05b078a4e6");
+//        list.add("4,0dde090d22");4,0dde090d22
+//        list.add("4,13f12ae8b7");4,13f12ae8b7
+//        list.add("4,15b7d92c45");
+//        list.add("5,0b69d7b537");
+//        list.add("5,0fe62a58ea");
+//        list.add("test.pdf");
+//        list.add("最高人民法院关于适用《中华人民共和国公司法》若干问题的规定（四）%20%28法释〔2017〕16号%29.pdf");
+//        seaweedFileService.deleteFiles(list);
+
+    }
+
 
 }

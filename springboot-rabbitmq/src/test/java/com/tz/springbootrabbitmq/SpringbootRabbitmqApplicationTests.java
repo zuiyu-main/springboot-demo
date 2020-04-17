@@ -1,7 +1,10 @@
 package com.tz.springbootrabbitmq;
 
 import com.alibaba.druid.support.json.JSONUtils;
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.ShutdownListener;
+import com.rabbitmq.client.ShutdownSignalException;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

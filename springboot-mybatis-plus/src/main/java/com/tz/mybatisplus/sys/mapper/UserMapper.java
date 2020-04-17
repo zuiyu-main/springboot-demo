@@ -1,7 +1,7 @@
 package com.tz.mybatisplus.sys.mapper;
 
-import com.tz.mybatisplus.sys.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.tz.mybatisplus.sys.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

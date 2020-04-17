@@ -1,6 +1,5 @@
 package com.tz.springbootshiro.tk;
 
-import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.ExampleMapper;
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;

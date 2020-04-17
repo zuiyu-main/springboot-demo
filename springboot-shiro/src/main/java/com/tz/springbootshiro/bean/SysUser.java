@@ -1,7 +1,10 @@
 package com.tz.springbootshiro.bean;
 
-import javax.persistence.*;
 import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @Table(name = "sys_user")

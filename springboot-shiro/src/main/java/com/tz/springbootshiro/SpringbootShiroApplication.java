@@ -1,6 +1,5 @@
 package com.tz.springbootshiro;
 
-import com.tz.springbootshiro.controller.TestController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

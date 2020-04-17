@@ -1,8 +1,10 @@
 package com.tz.security.bean;
 
-import javax.persistence.*;
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @Table(name = "role")

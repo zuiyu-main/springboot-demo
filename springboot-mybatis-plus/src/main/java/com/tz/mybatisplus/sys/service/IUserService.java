@@ -1,7 +1,7 @@
 package com.tz.mybatisplus.sys.service;
 
-import com.tz.mybatisplus.sys.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.tz.mybatisplus.sys.entity.User;
 
 /**
  * <p>
