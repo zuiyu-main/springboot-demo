@@ -24,16 +24,23 @@ public class MsgReceiver {
 //    public void processB(String content) {
 //        log.info("处理器two接收处理队列A当中的消息： " + content);
 //    }
-    @RabbitListener(queues = "test.1")
+@RabbitListener(queues = "test.1")
+@RabbitHandler
+public void processC(String content) {
+    log.info("处理器test1的消息： " + content);
+}
+
+    @RabbitListener(queues = "test.2")
     @RabbitHandler
-    public void processC(String content) {
-        log.info("处理器test1的消息： " + content);
+    public void processD(String content) {
+        log.info("处理器test2的消息： " + content);
     }
-//    @RabbitListener(queues = "test.2")
-//    @RabbitHandler
-//    public void processD(String content) {
-//        log.info("处理器test2的消息： " + content);
-//    }
+
+    @RabbitListener(queues = "test.2")
+    @RabbitHandler
+    public void processE(String content) {
+        log.info("处理器test3的消息： " + content);
+    }
 //    @RabbitListener(queues = "greetings")
 //    @RabbitHandler
 //    public void processE(Message content) {

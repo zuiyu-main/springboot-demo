@@ -42,22 +42,19 @@ public class RabbitConfig {
     private String password;
 
 
-    public static final String EXCHANGE_A = "my-mq-exchange_A";
-    public static final String EXCHANGE_B = "my-mq-exchange_B";
-    public static final String EXCHANGE_C = "my-mq-exchange_C";
+    public static final String EXCHANGE_A = "test_exchange";
 
 
-    public static final String QUEUE_A = "QUEUE_A";
-    public static final String QUEUE_B = "QUEUE_B";
-    public static final String QUEUE_C = "QUEUE_C";
+    public static final String TEST_A = "test.1";
+    public static final String TEST_B = "test.2";
+    public static final String TEST_C = "test.3";
 
-    public static final String ROUTINGKEY_A = "spring-boot-routingKey_A";
-    public static final String ROUTINGKEY_B = "spring-boot-routingKey_B";
-    public static final String ROUTINGKEY_C = "spring-boot-routingKey_C";
+    public static final String TEST_ROUTE_KEY = "test.*";
+
 
     @Bean
     public ConnectionFactory connectionFactory() {
-        CachingConnectionFactory connectionFactory = new CachingConnectionFactory(host,port);
+        CachingConnectionFactory connectionFactory = new CachingConnectionFactory(host, port);
         connectionFactory.setUsername(username);
         connectionFactory.setPassword(password);
         connectionFactory.setVirtualHost("my_vhost");
@@ -79,44 +76,55 @@ public class RabbitConfig {
      FanoutExchange: 将消息分发到所有的绑定队列，无routingkey的概念
      HeadersExchange ：通过添加属性key-value匹配
      DirectExchange:按照routingkey分发到指定队列
-     TopicExchange:多关键字匹配
+     TopicExchange:多关键字匹配 定义 route key 可以群发多个队列
      */
     @Bean
     public DirectExchange defaultExchange() {
         return new DirectExchange(EXCHANGE_A);
     }
+
+    @Bean
+    public TopicExchange testExchange() {
+        return new TopicExchange("test");
+    }
+
     /**
      * 获取队列A
+     *
      * @return
      */
     @Bean
     public Queue queueA() {
         //队列持久
-        return new Queue(QUEUE_A, true);
+        return new Queue(TEST_A, true);
     }
+
     @Bean
     public Queue queueB() {
         //队列持久
-        return new Queue(QUEUE_B, true);
+        return new Queue(TEST_B, true);
     }
+
+    @Bean
+    public Queue queueC() {
+        //队列持久
+        return new Queue(TEST_C, true);
+    }
+
     @Bean
     public Binding binding() {
 
-        return BindingBuilder.bind(queueA()).to(defaultExchange()).with(RabbitConfig.ROUTINGKEY_A);
+        return BindingBuilder.bind(queueA()).to(testExchange()).with(RabbitConfig.TEST_ROUTE_KEY);
     }
+
     @Bean
-    public Binding bindingB(){
-        return BindingBuilder.bind(queueB()).to(defaultExchange()).with(RabbitConfig.ROUTINGKEY_B);
+    public Binding bindingB() {
+        return BindingBuilder.bind(queueB()).to(testExchange()).with(RabbitConfig.TEST_ROUTE_KEY);
     }
+
     @Bean
-    public TopicExchange testExchange(){
-        return new TopicExchange("test");
+    public Binding bindingC() {
+        return BindingBuilder.bind(queueC()).to(testExchange()).with(RabbitConfig.TEST_ROUTE_KEY);
     }
-    @Bean Queue test3Queue(){
-        return new Queue("test.3",true);
-    }
-    @Bean
-    public Binding bindingTest(){
-        return BindingBuilder.bind(test3Queue()).to(testExchange()).with("test.*");
-    }
+
 }
