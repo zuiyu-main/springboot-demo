@@ -373,9 +373,7 @@ NoNodeAvailableException[None of the configured nodes are available: [{#transpor
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190724090445665.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0MxMDQxMDY3MjU4,size_16,color_FFFFFF,t_70)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019072409050498.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0MxMDQxMDY3MjU4,size_16,color_FFFFFF,t_70)
 
-博客地址
-
-【https://blog.csdn.net/C1041067258/article/details/97035765】
+* [博客地址](https://blog.csdn.net/C1041067258/article/details/97035765)
 * 过滤显示字段类似mysql select id
         FetchSourceFilter fetchSourceFilter = new FetchSourceFilter(null, new String[]{"permission"});  //查询结果不返回content
         new NativeSearchQueryBuilder().withSourceFilter(fetchSourceFilter)
