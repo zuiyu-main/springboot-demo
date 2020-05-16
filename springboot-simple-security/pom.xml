@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.tz.serurity</groupId>
-    <artifactId>simple</artifactId>
+    <artifactId>springboot-simple-security</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>simple-security</name>
     <description>Demo project for Spring Boot security simple demo</description>

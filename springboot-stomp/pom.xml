@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.tz</groupId>
-    <artifactId>stomp</artifactId>
+    <artifactId>springboot-stomp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>stomp</name>
     <description>Demo project for Spring Boot</description>
