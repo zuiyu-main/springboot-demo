@@ -10,6 +10,9 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author tz
  * @Classname RabbitConfig
@@ -43,6 +46,8 @@ public class RabbitConfig {
 
 
     public static final String EXCHANGE_A = "test_exchange";
+    public static final String EXCHANGE_TEST = "test";
+    public static final String MY_EXCHANGE = "myExchange";
 
 
     public static final String TEST_A = "test.1";
@@ -50,6 +55,11 @@ public class RabbitConfig {
     public static final String TEST_C = "test.3";
 
     public static final String TEST_ROUTE_KEY = "test.*";
+    public static final String PRIORITY_ROUTE_KEY = "priority";
+    public static final String PRIORITY_ROUTE_KEY_TEST = "priority.test";
+
+    public static final String QUEUE_PRIORITY = "queue.priority.1";
+    public static final String QUEUE_PRIORITY_2 = "queue.priority.2";
 
 
     @Bean
@@ -109,6 +119,36 @@ public class RabbitConfig {
     public Queue queueC() {
         //队列持久
         return new Queue(TEST_C, true);
+    }
+
+
+    @Bean
+    public Queue priority_Queue() {
+        Map<String, Object> map = new HashMap<String, Object>(1);
+        map.put("x-max-priority", 10);
+        return new Queue(QUEUE_PRIORITY, true, false, false, map);
+    }
+
+    @Bean
+    public Queue priority_Queue_2() {
+        Map<String, Object> map = new HashMap<String, Object>(1);
+        map.put("x-max-priority", 10);
+        return new Queue(QUEUE_PRIORITY_2, true, false, false, map);
+    }
+
+    @Bean
+    public DirectExchange myExchange() {
+        return new DirectExchange(MY_EXCHANGE);
+    }
+
+    @Bean
+    public Binding myBindingPriority() {
+        return new Binding("queue.priority.1", Binding.DestinationType.QUEUE, "myExchange", PRIORITY_ROUTE_KEY, null);
+    }
+
+    @Bean
+    public Binding myBindingPriority2() {
+        return new Binding("queue.priority.2", Binding.DestinationType.QUEUE, "test", PRIORITY_ROUTE_KEY_TEST, null);
     }
 
     @Bean
