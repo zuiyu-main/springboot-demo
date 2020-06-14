@@ -51,12 +51,12 @@ public class MsgReceiver {
     @RabbitListener(queues = RabbitConfig.QUEUE_PRIORITY)
     @RabbitHandler
     public void priority(String content) {
-        log.info("处理器myExchange的消息： " + content);
+        log.info("交换机 test 的消息： " + content);
     }
 
-    @RabbitListener(queues = RabbitConfig.QUEUE_PRIORITY_2)
-    @RabbitHandler
-    public void QUEUE_PRIORITY_2(String content) {
-        log.info("处理器 QUEUE_PRIORITY_2 的消息： " + content);
-    }
+//    @RabbitListener(queues = RabbitConfig.QUEUE_PRIORITY_2)
+//    @RabbitHandler
+//    public void QUEUE_PRIORITY_2(String content) {
+//        log.info("处理器 QUEUE_PRIORITY_2 的消息： " + content);
+//    }
 }

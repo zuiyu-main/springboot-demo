@@ -95,7 +95,7 @@ public class RabbitConfig {
 
     @Bean
     public TopicExchange testExchange() {
-        return new TopicExchange("test");
+        return new TopicExchange(EXCHANGE_TEST);
     }
 
     /**
@@ -143,7 +143,7 @@ public class RabbitConfig {
 
     @Bean
     public Binding myBindingPriority() {
-        return new Binding("queue.priority.1", Binding.DestinationType.QUEUE, "myExchange", PRIORITY_ROUTE_KEY, null);
+        return new Binding(QUEUE_PRIORITY, Binding.DestinationType.QUEUE, EXCHANGE_TEST, PRIORITY_ROUTE_KEY, null);
     }
 
     @Bean
