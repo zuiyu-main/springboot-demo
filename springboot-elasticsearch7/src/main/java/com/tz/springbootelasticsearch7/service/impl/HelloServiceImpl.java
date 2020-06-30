@@ -51,12 +51,13 @@ public class HelloServiceImpl implements HelloService {
     public String getRedisInfo() {
 
 
-        MyIndex contentLike = myIndexDao.findAllByContentLike("中国");
-        NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(matchQuery("content", "中国").analyzer("ik_max_word")).build();
-        SearchHits<MyIndex> search = elasticsearchTemplate.search(searchQuery, MyIndex.class);
+//        MyIndex contentLike = myIndexDao.findAllByContentLike("中国");
+//        NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
+//                .withQuery(matchQuery("content", "中国").analyzer("ik_max_word")).build();
+        NativeSearchQuery build = new NativeSearchQueryBuilder().withQuery(matchAllQuery()).build();
+        SearchHits<MyIndex> search = elasticsearchTemplate.search(build, MyIndex.class);
         List<SearchHit<MyIndex>> searchHits = search.getSearchHits();
-        System.out.println(contentLike);
+        System.out.println(searchHits.size());
         return "";
     }
 

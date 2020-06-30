@@ -31,28 +31,28 @@ public class MsgReceiver {
 //        log.info("处理器test1的消息： " + content);
 //    }
 
-    @RabbitListener(queues = "test.2")
-    @RabbitHandler
-    public void processD(String content) {
-        log.info("处理器test2的消息： " + content);
-    }
-
-    @RabbitListener(queues = "test.2")
-    @RabbitHandler
-    public void processE(String content) {
-        log.info("处理器test3的消息： " + content);
-    }
+//    @RabbitListener(queues = "test.2")
+//    @RabbitHandler
+//    public void processD(String content) {
+//        log.info("处理器test2的消息： " + content);
+//    }
+//
+//    @RabbitListener(queues = "test.2")
+//    @RabbitHandler
+//    public void processE(String content) {
+//        log.info("处理器test3的消息： " + content);
+//    }
 //    @RabbitListener(queues = "greetings")
 //    @RabbitHandler
 //    public void processE(Message content) {
 //        log.info("处理器testE的消息： " + content.getBody());
 //    }
 
-    @RabbitListener(queues = RabbitConfig.QUEUE_PRIORITY)
-    @RabbitHandler
-    public void priority(String content) {
-        log.info("交换机 test 的消息： " + content);
-    }
+//    @RabbitListener(queues = RabbitConfig.QUEUE_PRIORITY)
+//    @RabbitHandler
+//    public void priority(String content) {
+//        log.info("交换机 test 的消息： " + content);
+//    }
 
 //    @RabbitListener(queues = RabbitConfig.QUEUE_PRIORITY_2)
 //    @RabbitHandler

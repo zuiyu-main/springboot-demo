@@ -1,15 +1,19 @@
 package com.tz.springbootrabbitmq.config;
 
+import com.tz.springbootrabbitmq.rabbit.MsgHandlerService;
+import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -167,4 +171,30 @@ public class RabbitConfig {
         return BindingBuilder.bind(queueC()).to(testExchange()).with(RabbitConfig.TEST_ROUTE_KEY);
     }
 
+
+    /**
+     * 注册消费者
+     */
+
+    @Bean
+    @Scope("prototype")
+    public MsgHandlerService handleService() {
+        return new MsgHandlerService();
+    }
+
+    @Bean
+    public SimpleMessageListenerContainer mqMessageContainer(MsgHandlerService handleService) throws AmqpException, IOException {
+        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory());
+        container.setQueueNames(TEST_A);
+        container.setExposeListenerChannel(true);
+        //设置每个消费者获取的最大的消息数量
+        container.setPrefetchCount(100);
+        //消费者个数
+        container.setConcurrentConsumers(5);
+        //设置确认模式为手工确认
+        container.setAcknowledgeMode(AcknowledgeMode.MANUAL);
+        //监听处理类
+        container.setMessageListener(handleService);
+        return container;
+    }
 }
