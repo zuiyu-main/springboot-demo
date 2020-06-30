@@ -1,7 +1,6 @@
 package com.tz.springbootelasticsearch7.runner;
 
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.admin.indices.alias.Alias;
 import org.elasticsearch.action.admin.indices.template.put.PutIndexTemplateRequest;
@@ -35,7 +34,6 @@ import java.util.Map;
  * @Date 2019-11-15 14:13
  */
 @Component
-@Slf4j
 @Order(10)
 public class InitElasticIndexRunner implements CommandLineRunner {
 
@@ -46,7 +44,7 @@ public class InitElasticIndexRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        log.info("初始化创建索引");
+//        log.info("初始化创建索引");
         RestHighLevelClient client = new RestHighLevelClient(
                 RestClient.builder(
                         new HttpHost("localhost", 9200, "http")));
@@ -142,9 +140,9 @@ public class InitElasticIndexRunner implements CommandLineRunner {
 
         // 响应
         boolean acknowledged = createIndexResponse.isAcknowledged();
-        log.info("创建索引响应1：[{}]", acknowledged);
+//        log.info("创建索引响应1：[{}]", acknowledged);
         boolean shardsAcknowledged = createIndexResponse.isShardsAcknowledged();
-        log.info("创建索引响应2：[{}]", shardsAcknowledged);
+//        log.info("创建索引响应2：[{}]", shardsAcknowledged);
 
 
     }
@@ -189,7 +187,7 @@ public class InitElasticIndexRunner implements CommandLineRunner {
         settings.put("number_of_replicas", 0);
         request.settings(settings);
         AcknowledgedResponse acknowledgedResponse = client.indices().putTemplate(request, RequestOptions.DEFAULT);
-        log.info("创建索引模版返回:[{}]", acknowledgedResponse.isAcknowledged());
+//        log.info("创建索引模版返回:[{}]", acknowledgedResponse.isAcknowledged());
 
     }
 
