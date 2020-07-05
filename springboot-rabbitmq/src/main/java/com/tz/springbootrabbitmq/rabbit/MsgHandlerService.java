@@ -6,6 +6,8 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.ChannelAwareMessageListener;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 /**
  * @author https://github.com/TianPuJun @256g的胃
  * @ClassName MsgHandlerService
@@ -34,8 +36,18 @@ public class MsgHandlerService implements ChannelAwareMessageListener {
      * @throws Exception Any.
      */
     @Override
-    public void onMessage(Message message, Channel channel) throws Exception {
-        log.info("线程[{}]监听到消息[{}]", Thread.currentThread().getName(), new String(message.getBody()));
+    public void onMessage(Message message, Channel channel) throws IOException {
+        try {
+
+
+            log.info("线程[{}]监听到消息[{}]", Thread.currentThread().getName(), new String(message.getBody()));
+            int i = 1 / 0;
+            log.info("i=[{}]", i);
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+        } catch (Exception e) {
+            log.warn("报错=[{}]", e.getMessage());
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+        }
 
     }
 }
