@@ -1,6 +1,5 @@
 package com.tz.springbootrabbitmq.controller;
 
-import com.tz.springbootrabbitmq.rabbit.MsgProducer;
 import com.tz.springbootrabbitmq.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

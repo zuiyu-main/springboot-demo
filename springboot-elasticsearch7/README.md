@@ -194,15 +194,30 @@ NoNodeAvailableException[None of the configured nodes are available: [{#transpor
 	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
 
 ```
+
+
 ##### 解决
 出现这个问题一般就是查看端口，集群名称，ip地址是否写对，这里有个地方 需要注意，
 <font color="#FF0000">java链接端口默认9300，不是es的9200</font> 
 
+### 坑3 
+在集成高版本的es中，boot，data版本都升级报错信息如下
+```text
+java.lang.IncompatibleClassChangeError: Found class org.elasticsearch.common.bytes.BytesReference, but interface was expected
+```
+##### 解决就是pom中引入es的版本改为7.6.2 就可以了
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190724090522300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0MxMDQxMDY3MjU4,size_16,color_FFFFFF,t_70)然后其他注意的地方就是cluster-name 这个名称要和es.yml配置文件中cluster.name名称一致
 ,即都elasticsearch-cluster
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190724090445665.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0MxMDQxMDY3MjU4,size_16,color_FFFFFF,t_70)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019072409050498.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0MxMDQxMDY3MjU4,size_16,color_FFFFFF,t_70)
 
-elasticsearch +springData
-[https://docs.spring.io/spring-data/elasticsearch/docs/3.2.0.RELEASE/reference/html/]
+* 基础配置 elasticsearch +springData
+[https://docs.spring.io/spring-data/elasticsearch/docs/3.2.0.RELEASE/reference/html/](基础配置)
+
+* 最新配置
+[https://docs.spring.io/spring-data/elasticsearch/docs/4.0.1.RELEASE/reference/html/#elasticsearch.operations.template](最新配置)
+
+* IK分词器的安装
+
+[https://github.com/medcl/elasticsearch-analysis-ik](注意需要与es版本一致的分词器)

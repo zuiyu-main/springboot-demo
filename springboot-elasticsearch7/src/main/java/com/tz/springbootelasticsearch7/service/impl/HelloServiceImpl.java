@@ -9,14 +9,11 @@ import com.tz.springbootelasticsearch7.service.HelloService;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
-import org.springframework.data.elasticsearch.core.SearchHit;
+import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.SearchHits;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -33,31 +30,26 @@ public class HelloServiceImpl implements HelloService {
 
 
     @Autowired
-    private ElasticsearchTemplate elasticsearchTemplate;
+    private ElasticsearchRestTemplate elasticsearchRestTemplate;
 
     @Override
     public String sayHello() {
         MyIndex myIndex = new MyIndex();
-        myIndex.setId("1");
-        myIndex.setTitle("测试1");
+        myIndex.setId("2");
+        myIndex.setTitle("测试21");
         myIndex.setContent("curl -XPOST http://localhost:9200/index/_create/3 -H 'Content-Type:application/json' -d'\n" +
                 "{\"content\":\"中韩渔警冲突调查：韩警平均每天扣1艘中国渔船\"}\n" +
                 "'");
-        myIndexDao.save(myIndex);
+//        myIndexDao.save(myIndex);
         return "";
     }
 
     @Override
     public String getRedisInfo() {
-
-
-//        MyIndex contentLike = myIndexDao.findAllByContentLike("中国");
-//        NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
-//                .withQuery(matchQuery("content", "中国").analyzer("ik_max_word")).build();
-        NativeSearchQuery build = new NativeSearchQueryBuilder().withQuery(matchAllQuery()).build();
-        SearchHits<MyIndex> search = elasticsearchTemplate.search(build, MyIndex.class);
-        List<SearchHit<MyIndex>> searchHits = search.getSearchHits();
-        System.out.println(searchHits.size());
+        Query query = new NativeSearchQueryBuilder()
+                .withQuery(matchQuery("content", "中国"))
+                .build();
+        SearchHits<MyIndex> search = elasticsearchRestTemplate.search(query, MyIndex.class);
         return "";
     }
 
