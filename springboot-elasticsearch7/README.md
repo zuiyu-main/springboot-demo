@@ -221,3 +221,12 @@ java.lang.IncompatibleClassChangeError: Found class org.elasticsearch.common.byt
 * IK分词器的安装
 
 [https://github.com/medcl/elasticsearch-analysis-ik](注意需要与es版本一致的分词器)
+
+* pinyin分词器安装
+
+[https://github.com/medcl/elasticsearch-analysis-pinyin](需要与安装es版本保持一致)
+
+* 自定义 分词器 ik+pinyin
+
+[https://mp.weixin.qq.com/s/JhHBQsaQZdPL9cqPxXS2Ww](参考链接)
+
