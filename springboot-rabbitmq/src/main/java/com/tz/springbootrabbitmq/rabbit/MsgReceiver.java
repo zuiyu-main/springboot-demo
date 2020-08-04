@@ -1,7 +1,13 @@
 package com.tz.springbootrabbitmq.rabbit;
 
+import com.rabbitmq.client.Channel;
+import com.tz.springbootrabbitmq.config.RabbitConfig;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
 
 /**
  * @author tz
@@ -12,48 +18,32 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class MsgReceiver {
-//    @RabbitListener(queues = RabbitConfig.QUEUE_A)
-//    @RabbitHandler
-//    public void process(String content) {
-//        log.info("接收处理队列A当中的消息： " + content);
-//    }
-//    @RabbitListener(queues = RabbitConfig.QUEUE_A)
-//    @RabbitHandler
-//    public void processB(String content) {
-//        log.info("处理器two接收处理队列A当中的消息： " + content);
-//    }
-//    @RabbitListener(queues = "test.1")
-//    @RabbitHandler
-//    public void processC(String content) {
-//        log.info("处理器test1的消息： " + content);
-//    }
+    /**
+     * 直接监听
+     *
+     * @param content
+     */
+    @RabbitListener(queues = RabbitConfig.PRIORITY_QUEUE)
+    @RabbitHandler
+    public void defaultListener(String content) {
+        log.info("MsgReceiver 接收默认队列当中的消息：[{}] ", content);
+    }
 
-//    @RabbitListener(queues = "test.2")
-//    @RabbitHandler
-//    public void processD(String content) {
-//        log.info("处理器test2的消息： " + content);
-//    }
-//
-//    @RabbitListener(queues = "test.2")
-//    @RabbitHandler
-//    public void processE(String content) {
-//        log.info("处理器test3的消息： " + content);
-//    }
-//    @RabbitListener(queues = "greetings")
-//    @RabbitHandler
-//    public void processE(Message content) {
-//        log.info("处理器testE的消息： " + content.getBody());
-//    }
+    /**
+     * 自定义配置监听
+     *
+     * @param message
+     */
+    @RabbitListener(bindings = @QueueBinding(
+            value = @Queue(value = RabbitConfig.TEST_QUEUE_1, durable = "true"),
+            exchange = @Exchange(name = RabbitConfig.TEST_EXCHANGE, durable = "true", type = "topic"),
+            key = RabbitConfig.TEST_ROUTE_KEY
+    )
+    )
+    @RabbitHandler
+    public void testListener(Message message, Channel channel) throws IOException {
+        log.info("MsgReceiver 接收test1队列当中的消息：[{}]", new String(message.getBody()));
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+    }
 
-//    @RabbitListener(queues = RabbitConfig.QUEUE_PRIORITY)
-//    @RabbitHandler
-//    public void priority(String content) {
-//        log.info("交换机 test 的消息： " + content);
-//    }
-
-//    @RabbitListener(queues = RabbitConfig.QUEUE_PRIORITY_2)
-//    @RabbitHandler
-//    public void QUEUE_PRIORITY_2(String content) {
-//        log.info("处理器 QUEUE_PRIORITY_2 的消息： " + content);
-//    }
 }

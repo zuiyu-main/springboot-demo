@@ -8,6 +8,7 @@ import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -28,37 +29,53 @@ public class MsgProducer implements RabbitTemplate.ConfirmCallback, RabbitTempla
      */
     @Autowired
     public MsgProducer(RabbitTemplate rabbitTemplate) {
-        this.rabbitTemplate = rabbitTemplate;
         rabbitTemplate.setConfirmCallback(this);
         rabbitTemplate.setReturnCallback(this);
+        this.rabbitTemplate = rabbitTemplate;
+
         //rabbitTemplate如果为单例的话，那回调就是最后设置的内容
     }
 
-    public void sendMsg(String content) {
+    /**
+     * 发送普通消息
+     *
+     * @param exchange 交换机
+     * @param routeKey 路由key
+     * @param msg      发送的消息
+     */
+    public void sendMsg(String exchange, String routeKey, Object msg) {
         CorrelationData correlationId = new CorrelationData(UUID.randomUUID().toString());
-        //把消息放入ROUTINGKEY_A对应的队列当中去，对应的是队列A
-        rabbitTemplate.convertAndSend(RabbitConfig.EXCHANGE_A, RabbitConfig.TEST_ROUTE_KEY, content, correlationId);
+        rabbitTemplate.convertAndSend(exchange, routeKey, msg, correlationId);
     }
 
+    /**
+     * 发送优先级消息
+     * 前提： 队列支持优先级
+     *
+     * @param exchange 交换机
+     * @param routeKey 路由key
+     * @param msg      消息内容
+     * @param priority 优先级
+     */
     public void sendPriorityMsg(String exchange, String routeKey, Object msg, Integer priority) {
+        CorrelationData correlationId = new CorrelationData(UUID.randomUUID().toString());
         MessagePostProcessor messagePostProcessor = message -> {
             MessageProperties messageProperties = message.getMessageProperties();
             //设置编码
             messageProperties.setContentEncoding("utf-8");
-            //设置过期时间10*1000毫秒
             messageProperties.setPriority(priority);
             return message;
         };
-        rabbitTemplate.convertAndSend(exchange, routeKey, msg, messagePostProcessor);
+        rabbitTemplate.convertAndSend(exchange, routeKey, msg, messagePostProcessor, correlationId);
     }
 
     @Override
     public void confirm(CorrelationData correlationData, boolean b, String s) {
-        log.info(" confirm ------> 回调id:" + correlationData);
+        log.info("MsgProducer confirm correlationData: [{}]" , correlationData);
         if (b) {
-            log.info("消息成功消费");
+            log.info("消息成功消费 correlationData: [{}]",correlationData);
         } else {
-            log.info("消息消费失败:" + s);
+            log.info("消息消费失败:[{}]" ,s);
         }
     }
 
@@ -74,6 +91,18 @@ public class MsgProducer implements RabbitTemplate.ConfirmCallback, RabbitTempla
      */
     @Override
     public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
-        log.info("returnedMessage ------> message=[{}]", new String(message.getBody()));
+        log.info("MsgProducer returnedMessage message: [{}]", new String(message.getBody()));
+        log.info("MsgProducer returnedMessage replyCode: [{}]", replyCode);
+        log.info("MsgProducer returnedMessage replyText: [{}]", replyText);
+        log.info("MsgProducer returnedMessage exchange: [{}]", exchange);
+        log.info("MsgProducer returnedMessage routingKey: [{}]", routingKey);
     }
+
+    @Scheduled(cron = "0/5 * *  * * ? ")
+    public void autoSendMsg() {
+//        sendMsg(RabbitConfig.TEST_EXCHANGE,RabbitConfig.TEST_ROUTE_KEY,UUID.randomUUID().toString());
+        sendMsg(RabbitConfig.DEFAULT_EXCHANGE, RabbitConfig.DEFAULT_EXCHANGE, UUID.randomUUID().toString());
+    }
+
+
 }

@@ -38,14 +38,12 @@ public class MsgHandlerService implements ChannelAwareMessageListener {
     @Override
     public void onMessage(Message message, Channel channel) throws IOException {
         try {
-
-
-            log.info("线程[{}]监听到消息[{}]", Thread.currentThread().getName(), new String(message.getBody()));
+            log.info("MsgHandlerService 线程 [{}] 监听到消息 [{}]", Thread.currentThread().getName(), new String(message.getBody()));
             int i = 1 / 0;
             log.info("i=[{}]", i);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         } catch (Exception e) {
-            log.warn("报错=[{}]", e.getMessage());
+            log.warn("MsgHandlerService 报错: [{}],[{}]", e.getMessage(), e.getStackTrace());
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         }
 

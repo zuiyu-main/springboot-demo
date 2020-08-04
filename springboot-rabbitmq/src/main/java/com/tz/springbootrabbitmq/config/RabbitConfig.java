@@ -49,21 +49,29 @@ public class RabbitConfig {
     private String password;
 
 
-    public static final String EXCHANGE_A = "test_exchange";
-    public static final String EXCHANGE_TEST = "test";
-    public static final String MY_EXCHANGE = "myExchange";
+    /**
+     * 交换久初始化
+     */
+    public static final String DEFAULT_EXCHANGE = "defaultExchange";
+    public static final String TEST_EXCHANGE = "test";
+    public static final String PRIORITY_EXCHANGE = "priority";
 
 
-    public static final String TEST_A = "test.1";
-    public static final String TEST_B = "test.2";
-    public static final String TEST_C = "test.3";
+    /**
+     * 队列初始化
+     */
+    public static final String DEFAULT_QUEUE = "default";
+    public static final String TEST_QUEUE_1 = "test.1";
+    public static final String TEST_QUEUE_2 = "test.2";
+    public static final String TEST_QUEUE_3 = "test.3";
+    public static final String PRIORITY_QUEUE = "priority";
 
+    /**
+     * 路由key初始化
+     */
+    public static final String DEFAULT_ROUTE_KEY = "default.*";
     public static final String TEST_ROUTE_KEY = "test.*";
-    public static final String PRIORITY_ROUTE_KEY = "priority";
-    public static final String PRIORITY_ROUTE_KEY_TEST = "priority.test";
-
-    public static final String QUEUE_PRIORITY = "queue.priority.1";
-    public static final String QUEUE_PRIORITY_2 = "queue.priority.2";
+    public static final String PRIORITY_ROUTE_KEY = "priority.*";
 
 
     @Bean
@@ -94,86 +102,98 @@ public class RabbitConfig {
      */
     @Bean
     public DirectExchange defaultExchange() {
-        return new DirectExchange(EXCHANGE_A);
+        return new DirectExchange(DEFAULT_EXCHANGE);
     }
 
     @Bean
     public TopicExchange testExchange() {
-        return new TopicExchange(EXCHANGE_TEST);
+        return new TopicExchange(TEST_EXCHANGE);
+    }
+
+    @Bean
+    public TopicExchange priorityExchange() {
+        return new TopicExchange(PRIORITY_EXCHANGE);
     }
 
     /**
-     * 获取队列A
+     * durable 是否持久化
      *
      * @return
      */
     @Bean
-    public Queue queueA() {
-        //队列持久
-        return new Queue(TEST_A, true);
+    public Queue defaultQueue() {
+        return new Queue(DEFAULT_QUEUE, true);
     }
 
     @Bean
-    public Queue queueB() {
-        //队列持久
-        return new Queue(TEST_B, true);
+    public Queue queue1() {
+        return new Queue(TEST_QUEUE_1, true);
     }
 
     @Bean
-    public Queue queueC() {
-        //队列持久
-        return new Queue(TEST_C, true);
-    }
-
-
-    @Bean
-    public Queue priority_Queue() {
-        Map<String, Object> map = new HashMap<String, Object>(1);
-        map.put("x-max-priority", 10);
-        return new Queue(QUEUE_PRIORITY, true, false, false, map);
+    public Queue queue2() {
+        return new Queue(TEST_QUEUE_2, true);
     }
 
     @Bean
-    public Queue priority_Queue_2() {
-        Map<String, Object> map = new HashMap<String, Object>(1);
-        map.put("x-max-priority", 10);
-        return new Queue(QUEUE_PRIORITY_2, true, false, false, map);
-    }
-
-    @Bean
-    public DirectExchange myExchange() {
-        return new DirectExchange(MY_EXCHANGE);
-    }
-
-    @Bean
-    public Binding myBindingPriority() {
-        return new Binding(QUEUE_PRIORITY, Binding.DestinationType.QUEUE, EXCHANGE_TEST, PRIORITY_ROUTE_KEY, null);
-    }
-
-    @Bean
-    public Binding myBindingPriority2() {
-        return new Binding("queue.priority.2", Binding.DestinationType.QUEUE, "test", PRIORITY_ROUTE_KEY_TEST, null);
-    }
-
-    @Bean
-    public Binding binding() {
-
-        return BindingBuilder.bind(queueA()).to(testExchange()).with(RabbitConfig.TEST_ROUTE_KEY);
-    }
-
-    @Bean
-    public Binding bindingB() {
-        return BindingBuilder.bind(queueB()).to(testExchange()).with(RabbitConfig.TEST_ROUTE_KEY);
-    }
-
-    @Bean
-    public Binding bindingC() {
-        return BindingBuilder.bind(queueC()).to(testExchange()).with(RabbitConfig.TEST_ROUTE_KEY);
+    public Queue queue3() {
+        return new Queue(TEST_QUEUE_3, true);
     }
 
 
     /**
-     * 注册消费者
+     * 生命优先级队列
+     * 参数 x-max-priority  最大优先级
+     *
+     * @return
+     */
+    @Bean
+    public Queue priorityQueue() {
+        Map<String, Object> map = new HashMap<String, Object>(1);
+        map.put("x-max-priority", 10);
+        return new Queue(PRIORITY_QUEUE, true, false, false, map);
+    }
+
+
+    /**
+     * 初始化交换机与队列通过路由key绑定
+     *
+     * @return
+     */
+    @Bean
+    public Binding defaultQueueBindingExchange() {
+        return new Binding(DEFAULT_QUEUE, Binding.DestinationType.QUEUE, DEFAULT_EXCHANGE, DEFAULT_ROUTE_KEY, null);
+    }
+
+    @Bean
+    public Binding priorityQueueBindingTestExchange() {
+        return new Binding(PRIORITY_QUEUE, Binding.DestinationType.QUEUE, PRIORITY_EXCHANGE, PRIORITY_ROUTE_KEY, null);
+    }
+
+    /**
+     * 另外一种队列与交换机的绑定方式
+     *
+     * @return
+     */
+    @Bean
+    public Binding bindingTest1() {
+
+        return BindingBuilder.bind(queue1()).to(testExchange()).with(RabbitConfig.TEST_ROUTE_KEY);
+    }
+
+    @Bean
+    public Binding bindingTest2() {
+        return BindingBuilder.bind(queue2()).to(testExchange()).with(RabbitConfig.TEST_ROUTE_KEY);
+    }
+
+    @Bean
+    public Binding bindingTest3() {
+        return BindingBuilder.bind(queue3()).to(testExchange()).with(RabbitConfig.TEST_ROUTE_KEY);
+    }
+
+
+    /**
+     * 注册消费者,自定义消费者数量为5个
      */
 
     @Bean
@@ -185,7 +205,7 @@ public class RabbitConfig {
     @Bean
     public SimpleMessageListenerContainer mqMessageContainer(MsgHandlerService handleService) throws AmqpException, IOException {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory());
-        container.setQueueNames(TEST_A);
+        container.setQueueNames(DEFAULT_QUEUE);
         container.setExposeListenerChannel(true);
         //设置每个消费者获取的最大的消息数量
         container.setPrefetchCount(100);
