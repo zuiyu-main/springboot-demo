@@ -101,7 +101,9 @@ public class MsgProducer implements RabbitTemplate.ConfirmCallback, RabbitTempla
     @Scheduled(cron = "0/5 * *  * * ? ")
     public void autoSendMsg() {
 //        sendMsg(RabbitConfig.TEST_EXCHANGE,RabbitConfig.TEST_ROUTE_KEY,UUID.randomUUID().toString());
-        sendMsg(RabbitConfig.DEFAULT_EXCHANGE, RabbitConfig.DEFAULT_EXCHANGE, UUID.randomUUID().toString());
+
+
+        sendMsg(RabbitConfig.DEFAULT_EXCHANGE, RabbitConfig.DEFAULT_ROUTE_KEY, UUID.randomUUID().toString());
     }
 
 

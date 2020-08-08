@@ -38,6 +38,7 @@ public class MsgHandlerService implements ChannelAwareMessageListener {
     @Override
     public void onMessage(Message message, Channel channel) throws IOException {
         try {
+
             log.info("MsgHandlerService 线程 [{}] 监听到消息 [{}]", Thread.currentThread().getName(), new String(message.getBody()));
             int i = 1 / 0;
             log.info("i=[{}]", i);
