@@ -6,7 +6,7 @@ server:
 spring:
   data:
     elasticsearch:
-      cluster-name: es-docker-cluster
+      cluster-name: docker-cluster
       cluster-nodes: 127.0.0.1:9300
 #      repositories:
 #        enabled: true

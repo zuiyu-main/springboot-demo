@@ -19,11 +19,13 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(indexName = "test",type = "test")
+@Document(indexName = "test_doc", type = "test", createIndex = false)
 public class TestDocument {
     @Id
     private String id;
-    @Field(type = FieldType.Auto)
+    @Field(type = FieldType.Keyword)
     private List<String> permission;
+
+    @Field(type = FieldType.Keyword)
     private String title;
 }
