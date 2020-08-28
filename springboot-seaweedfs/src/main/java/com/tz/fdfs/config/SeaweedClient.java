@@ -67,7 +67,7 @@ public class SeaweedClient {
      */
     public FileHandleStatus saveFile(MultipartFile file) throws IOException {
         String fileName = file.getOriginalFilename();
-        FileHandleStatus status = template.saveFileByStream(fileName, file.getInputStream());
+        FileHandleStatus status = template.saveFileByStream(fileName, file.getInputStream(), ContentType.create(file.getContentType()));
         return status;
     }
 
@@ -106,6 +106,10 @@ public class SeaweedClient {
         return myFileTemplate.getFileStatus(fileId, fileName, contentType);
     }
 
+    public FileHandleStatus getFileStatus(String fileId) throws IOException {
+        return template.getFileStatus(fileId);
+    }
+
     /**
      * 通过文件流保存文件，此处为合并文件json文本上传使用方法，修改了cm=true
      *
@@ -117,8 +121,8 @@ public class SeaweedClient {
      * @return
      * @throws Exception
      */
-    public long uploadFile(String saveFileUrl, String fid, String fileName, InputStream inputStream, String contentType) throws Exception {
-        return myVolumeWrapper.uploadFile1(saveFileUrl, fid, fileName, inputStream, null, ContentType.create(contentType));
+    public long uploadFileWithCm(String saveFileUrl, String fid, String fileName, InputStream inputStream, String contentType) throws Exception {
+        return myVolumeWrapper.uploadFileWithCm(saveFileUrl, fid, fileName, inputStream, null, ContentType.create(contentType));
     }
 
     public void deleteFile(String fid) throws IOException {

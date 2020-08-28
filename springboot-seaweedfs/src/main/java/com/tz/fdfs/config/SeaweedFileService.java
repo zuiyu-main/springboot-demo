@@ -6,6 +6,7 @@ import net.anumbrella.seaweedfs.core.http.StreamResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,12 +34,16 @@ public class SeaweedFileService implements CommandLineRunner {
         client = new SeaweedClient(host, port);
     }
 
-    public long uploadFile(String saveFileUrl, String fid, String fileName, InputStream inputStream, String contentType) throws Exception {
-        return client.uploadFile(saveFileUrl, fid, fileName, inputStream, contentType);
+    public long uploadFileWithCm(String saveFileUrl, String fid, String fileName, InputStream inputStream, String contentType) throws Exception {
+        return client.uploadFileWithCm(saveFileUrl, fid, fileName, inputStream, contentType);
     }
 
     public FileHandleStatus saveFileByStream(String fileName, InputStream inputStream) throws IOException {
         return client.saveFileByStream(fileName, inputStream);
+    }
+
+    public FileHandleStatus saveFile(MultipartFile file) throws IOException {
+        return client.saveFile(file);
     }
 
     public void deleteFile(String fid) throws IOException {
@@ -56,6 +61,10 @@ public class SeaweedFileService implements CommandLineRunner {
 
     public FileHandleStatus getFileStatus(String fileId, String fileName, String contentType) throws IOException {
         return client.getFileStatus(fileId, fileName, contentType);
+    }
+
+    public FileHandleStatus getFileStatus(String fileId) throws IOException {
+        return client.getFileStatus(fileId);
     }
 
 }

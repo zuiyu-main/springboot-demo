@@ -56,12 +56,12 @@ public class MyVolumeWrapper {
      * @return
      * @throws Exception
      */
-    public long uploadFile1(String url, String fid, String fileName, InputStream stream, String ttl, ContentType contentType) throws Exception {
+    public long uploadFileWithCm(String url, String fid, String fileName, InputStream stream, String ttl, ContentType contentType) throws Exception {
         HttpPost httpPost;
         if (ttl != null) {
             httpPost = new HttpPost(url + "/" + fid + "?ttl=" + ttl);
         } else {
-            httpPost = new HttpPost(url + "/" + fid + "?cm=true");
+            httpPost = new HttpPost(url + "/" + fid + "?cm=true&pretty=yes");
         }
 
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
