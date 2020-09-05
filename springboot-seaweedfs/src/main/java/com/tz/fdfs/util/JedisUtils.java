@@ -24,6 +24,9 @@ public class JedisUtils {
     private JedisPool jedisPool;
     private static JedisUtils jedisUtils;
 
+    /**
+     * Constructor(构造方法) -> @Autowired(依赖注入) -> @PostConstruct(注释的方法)
+     */
     @PostConstruct
     public void JedisUtil() {
         jedisUtils = this;

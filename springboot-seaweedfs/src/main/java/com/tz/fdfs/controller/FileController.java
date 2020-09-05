@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.anumbrella.seaweedfs.core.file.FileHandleStatus;
 import net.anumbrella.seaweedfs.core.http.StreamResponse;
 import org.jsoup.Jsoup;
+import org.jsoup.internal.StringUtil;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

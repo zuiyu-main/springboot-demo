@@ -5,6 +5,7 @@ import com.tz.fdfs.util.FileUtils;
 import com.tz.fdfs.util.Md5Utils;
 import lombok.Data;
 import org.jsoup.Jsoup;
+import org.jsoup.internal.StringUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -198,13 +199,20 @@ public class FileControllerTest {
         FileDesc f6 = new FileDesc();
         f6.setId("2,24376fb6e5");
         f6.setTitle("工作周报 2020-08-24");
+
+        FileDesc f7 = new FileDesc();
+        f7.setId("6,0142cb740544");
+        f7.setTitle("周强在全国高级法院院长座谈会上强调 全面推进一站式多元解纷和诉讼服务体系建设 加快构建中国特色纠纷解决和诉讼服务模式");
+
+
 //
 //        ids.add(f1);
 //        ids.add(f2);
 //        ids.add(f3);
 //        ids.add(f4);
 //        ids.add(f5);
-        ids.add(f6);
+//        ids.add(f6);
+        ids.add(f7);
 //        String getText = fileController.loadFileText(null,"1,0dda956822");
 //        String title = "福建:多措并举推进民法典深度培训";
 //        String getText = fileController.loadFileText(null,"7,128b4968e8");
@@ -225,8 +233,10 @@ public class FileControllerTest {
                 int index = 0;
                 text = p.get(index).text();
                 boolean b =
-                        StringUtils.isEmpty(text)
+                        StringUtils.isEmpty(text.replace((char) 12288, ' ').trim())
+                                || StringUtil.isBlank(text)
                                 || text.contains(fileDesc.getTitle())
+                                || text.contains("图") && text.contains("摄")
                                 || text.contains("来源") && text.contains("发布")
                                 || text.contains("来源") && text.contains("发表");
                 while (b) {
@@ -237,12 +247,16 @@ public class FileControllerTest {
                         text = "";
                     } else {
                         text = p.get(index).text();
-                        b = StringUtils.isEmpty(text)
+                        b = StringUtils.isEmpty(text.replace((char) 12288, ' ').trim())
                                 || text.contains(fileDesc.getTitle())
                                 || text.contains("来源") && text.contains("发布")
+                                || text.contains("图") && text.contains("摄")
                                 || text.contains("来源") && text.contains("发表");
                     }
                 }
+            }
+            if (StringUtils.isEmpty(text.replace((char) 12288, ' ').trim())) {
+                text = fileController.getText("6,0142cb740544");
             }
             System.out.println(text);
         }
