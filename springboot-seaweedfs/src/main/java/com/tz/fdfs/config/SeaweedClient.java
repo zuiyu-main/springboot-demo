@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author tz
@@ -132,4 +134,13 @@ public class SeaweedClient {
     public void deleteFiles(List<String> fileIds) throws IOException {
         template.deleteFiles(new ArrayList(fileIds));
     }
+
+    public StreamResponse readScaledPhoto(String fid, Map<String, String> imgMap) throws IOException {
+        return template.getFileStream(fid, null, imgMap);
+    }
+
+    public StreamResponse loadFileBlockStream(String fid, Map<String, String> map) throws IOException {
+        return template.getFileStream(fid, map, null);
+    }
+
 }

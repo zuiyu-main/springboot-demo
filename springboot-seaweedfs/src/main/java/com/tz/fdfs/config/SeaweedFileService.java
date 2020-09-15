@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author tz
@@ -67,4 +68,11 @@ public class SeaweedFileService implements CommandLineRunner {
         return client.getFileStatus(fileId);
     }
 
+    public StreamResponse readScaledPhoto(String fid, Map<String, String> imgMap) throws IOException {
+        return client.readScaledPhoto(fid, imgMap);
+    }
+
+    public StreamResponse loadFileBlockStream(String fid, Map<String, String> map) throws IOException {
+        return client.loadFileBlockStream(fid, map);
+    }
 }

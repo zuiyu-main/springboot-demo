@@ -46,7 +46,12 @@ public class MsgHandlerService implements ChannelAwareMessageListener {
         } catch (Exception e) {
             log.warn("MsgHandlerService 报错: [{}],[{}]", e.getMessage(), e.getStackTrace());
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+            // 此处自定义异常 抛出或者return结束执行
+//            throw new IOException("自定义异常抛出");
+            return;
         }
+
+        log.info("测试一下是不是还会继续执行，------继续执行");
 
     }
 }

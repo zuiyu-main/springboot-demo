@@ -22,8 +22,10 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,10 +35,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author https://github.com/TianPuJun @无痕
@@ -185,9 +184,75 @@ public class FileController {
                                @PathVariable(value = "fid") String fid) throws IOException {
         StreamResponse fileStream = seaweedFileService.getFileStream(fid);
         response.setStatus(fileStream.getHttpResponseStatusCode());
-        getResponse(response, fileStream);
+        getResponse(response, fileStream.getInputStream());
     }
 
+    /**
+     * 分块加载文件 版本注意自定义版本，查看README
+     *
+     * @param request
+     * @param response
+     * @param fid
+     * @throws IOException
+     */
+    @GetMapping("/loadFileBlockStream/{fid}")
+    public void loadFileBlockStream(HttpServletRequest request, HttpServletResponse response,
+                                    @PathVariable(value = "fid") String fid) throws IOException {
+        String range = request.getHeader("range");
+        Map<String, String> map = new HashMap<>(16);
+        map.put("range", range);
+        StreamResponse fileStream = seaweedFileService.loadFileBlockStream(fid, map);
+        response.setStatus(fileStream.getHttpResponseStatusCode());
+        getResponse(response, fileStream.getInputStream());
+    }
+
+    /**
+     * 图像的缩放读取 版本注意自定义版本，查看README https://github.com/chrislusf/seaweedfs
+     *
+     * @param request
+     * @param response
+     * @param fid
+     * @throws IOException
+     */
+    @GetMapping("/readScaledPhoto/{fid}")
+    public void readScaledPhoto(HttpServletRequest request, HttpServletResponse response,
+                                @PathVariable(value = "fid") String fid,
+                                @RequestParam String fileSuffix,
+                                @RequestParam String width,
+                                @RequestParam String height,
+                                @RequestParam String mode) throws IOException {
+
+        String url = "http://localhost:8888/";
+//        String url = "http://localhost:8888/WX20200905-150535@2x.png?height=400&width=400&mode=fill";
+        StringBuilder str = new StringBuilder();
+        str.append(url);
+        str.append(fid)
+//                .append(".").append(fileSuffix)
+                .append("?width=").append(width)
+                .append("&height=").append(height)
+                .append("&mode=").append(mode);
+        ResponseEntity<Resource> entity = restTemplate.getForEntity(str.toString(), Resource.class);
+        InputStream inputStream = entity.getBody().getInputStream();
+        ServletOutputStream out = response.getOutputStream();
+        int len = 0;
+        byte[] buffer = new byte[4096];
+        while (len != -1) {
+            len = inputStream.read(buffer);
+            out.write(buffer, 0, len);
+        }
+        out.flush();
+        out.close();
+
+    }
+
+    /**
+     * 加载文件的纯文本
+     *
+     * @param request
+     * @param fid
+     * @return
+     * @throws IOException
+     */
     @GetMapping("/loadFileText/{fid}")
     public String loadFileText(HttpServletRequest request,
                                @PathVariable(value = "fid") String fid) throws IOException {
@@ -250,8 +315,7 @@ public class FileController {
         return doc.text();
     }
 
-    public void getResponse(HttpServletResponse response, StreamResponse fileStream) throws IOException {
-        InputStream inputStream = fileStream.getInputStream();
+    public void getResponse(HttpServletResponse response, InputStream inputStream) throws IOException {
         ServletOutputStream out = response.getOutputStream();
         int len = 0;
         byte[] buffer = new byte[4096];
@@ -262,4 +326,6 @@ public class FileController {
         out.flush();
         out.close();
     }
+
+
 }

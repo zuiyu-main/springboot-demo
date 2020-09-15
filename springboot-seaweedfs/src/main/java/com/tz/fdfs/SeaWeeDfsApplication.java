@@ -1,7 +1,9 @@
 package com.tz.fdfs;
 
+import com.tz.fdfs.controller.FileController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author tz
@@ -10,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SeaWeeDfsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SeaWeeDfsApplication.class, args);
+		ConfigurableApplicationContext run = SpringApplication.run(SeaWeeDfsApplication.class, args);
 	}
 
 }
