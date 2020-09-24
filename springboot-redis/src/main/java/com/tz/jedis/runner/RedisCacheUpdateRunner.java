@@ -1,6 +1,6 @@
 package com.tz.jedis.runner;
 
-import com.tz.jedis.util.JedisUtil;
+import com.tz.jedis.util.JedisUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -24,7 +24,7 @@ public class RedisCacheUpdateRunner implements CommandLineRunner {
     @Autowired
     private RedisTemplate redisTemplate;
     @Autowired
-    private JedisUtil jedisUtil;
+    private JedisUtils jedisUtils;
     @Override
     public void run(String... args) throws Exception {
         // pattern 为要匹配等正则
