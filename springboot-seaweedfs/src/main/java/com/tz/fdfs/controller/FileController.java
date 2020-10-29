@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import net.anumbrella.seaweedfs.core.file.FileHandleStatus;
 import net.anumbrella.seaweedfs.core.http.StreamResponse;
 import org.jsoup.Jsoup;
-import org.jsoup.internal.StringUtil;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +24,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
@@ -45,6 +43,7 @@ import java.util.*;
  **/
 @Slf4j
 @RestController
+@RequestMapping("/api")
 public class FileController {
     @Autowired
     private SeaweedFileService seaweedFileService;
@@ -176,12 +175,13 @@ public class FileController {
      *
      * @param request
      * @param response
-     * @param fid
+     * @param fid      6,01788f2afc0f
      * @throws IOException
      */
     @GetMapping("/loadFileStream/{fid}")
-    public void loadFileStream(HttpServletRequest request, HttpServletResponse response,
-                               @PathVariable(value = "fid") String fid) throws IOException {
+    public void loadFileStream1(HttpServletRequest request, HttpServletResponse response,
+                                @PathVariable(value = "fid") String fid) throws IOException {
+        log.info("服务器读取数据1 fid[{}]", fid);
         StreamResponse fileStream = seaweedFileService.getFileStream(fid);
         response.setStatus(fileStream.getHttpResponseStatusCode());
         getResponse(response, fileStream.getInputStream());

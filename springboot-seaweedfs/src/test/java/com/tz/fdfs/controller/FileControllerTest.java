@@ -5,7 +5,6 @@ import com.tz.fdfs.util.FileUtils;
 import com.tz.fdfs.util.Md5Utils;
 import lombok.Data;
 import org.jsoup.Jsoup;
-import org.jsoup.internal.StringUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
