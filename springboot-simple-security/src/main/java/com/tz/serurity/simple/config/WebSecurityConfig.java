@@ -1,5 +1,7 @@
 package com.tz.serurity.simple.config;
 
+import com.tz.serurity.simple.service.MyUserDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -7,6 +9,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+
+import javax.annotation.Resource;
+import javax.sql.DataSource;
 
 /**
  * @author tz
@@ -16,7 +23,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  */
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+    @Resource
+    private DataSource dataSource;
+    @Resource
+    private MyUserDetailService userDetailService;
 
     /**
      * Override this method to configure the {@link HttpSecurity}. Typically subclasses
@@ -35,6 +45,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
         http
+                .rememberMe()
+                .tokenRepository(persistentTokenRepository())
+                // remember 过期时间，单为秒
+                .tokenValiditySeconds(3600)
+                // 处理自动登录逻辑
+                .userDetailsService(userDetailService)
+                .and()
                 // 添加验证码拦截器在 UsernamePasswordAuthenticationFilter 之前
                 .addFilterBefore(validateCodeFilter(), UsernamePasswordAuthenticationFilter.class)
                 // 表单登录
@@ -50,6 +67,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 处理登录失败
                 .failureHandler(myAuthenticationFailureHandler())
                 .and()
+
                 // 授权配置
                 .authorizeRequests()
                 // 登录跳转 URL 无需认证
@@ -90,5 +108,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public ValidateCodeFilter validateCodeFilter() {
         return new ValidateCodeFilter();
+    }
+
+    @Bean
+    public PersistentTokenRepository persistentTokenRepository() {
+        JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
+        jdbcTokenRepository.setDataSource(dataSource);
+        jdbcTokenRepository.setCreateTableOnStartup(false);
+        return jdbcTokenRepository;
     }
 }

@@ -4,6 +4,11 @@
 [github](https://github.com/dianping/cat/tree/master/lib/java)
 [jar包参考链接](https://www.cnblogs.com/huanchupkblog/p/10687680.html)
 
+## 登录记住我
+* sql JdbcTokenRepositoryImpl
 
+```sql
+create table persistent_logins (username varchar(64) not null, series varchar(64) primary key, token varchar(64) not null, last_used timestamp not null)
+```
 
 
