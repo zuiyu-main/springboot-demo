@@ -1,7 +1,6 @@
 package com.tz.serurity.simple.config;
 
 import com.tz.serurity.simple.service.MyUserDetailService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -95,21 +94,41 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * 认证成功处理
+     *
+     * @return
+     */
     @Bean
     public MyAuthenticationSuccessHandler myAuthenticationSuccessHandler() {
         return new MyAuthenticationSuccessHandler();
     }
 
+    /**
+     * 认证失败处理
+     *
+     * @return
+     */
     @Bean
     public MyAuthenticationFailureHandler myAuthenticationFailureHandler() {
         return new MyAuthenticationFailureHandler();
     }
 
+    /**
+     * 验证码过滤器
+     *
+     * @return
+     */
     @Bean
     public ValidateCodeFilter validateCodeFilter() {
         return new ValidateCodeFilter();
     }
 
+    /**
+     * 记住我持久化使用
+     *
+     * @return
+     */
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
         JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
