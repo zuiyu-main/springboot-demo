@@ -5,6 +5,7 @@ import com.tz.fdfs.util.FileUtils;
 import com.tz.fdfs.util.Md5Utils;
 import lombok.Data;
 import org.jsoup.Jsoup;
+import org.jsoup.internal.StringUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -176,60 +177,27 @@ public class FileControllerTest {
     public void getHTMLText1() throws IOException {
         List<FileDesc> ids = new ArrayList<>(10);
         FileDesc f1 = new FileDesc();
-        f1.setId("4,0172367c4bd6");
-        f1.setTitle("河南法官进修学院举办教师节座谈会");
-
-        FileDesc f2 = new FileDesc();
-        f2.setId("5,017585e2afa4");
-        f2.setTitle("宁波法院：争当“最美模范生”");
+        f1.setId("1,018375ed3927");
+        f1.setTitle("第二届民营经济法治建设峰会召开 高云龙周强张军出席");
+//
+//        FileDesc f2 = new FileDesc();
+//        f2.setId("5,017585e2afa4");
+//        f2.setTitle("宁波法院：争当“最美模范生”");
 
 
         ids.add(f1);
-        ids.add(f2);
+//        ids.add(f2);
 //        ids.add(f3);
         for (FileDesc fileDesc : ids) {
             StringBuilder text = new StringBuilder();
             int index = 0;
-            String getText = fileController.loadFileText(null, fileDesc.getId());
-            Document document = Jsoup.parseBodyFragment(getText);
-            Elements p = document.select("p");
-            if (p.size() == 0) {
-                Document doc = Jsoup.parse(getText);
-                text = new StringBuilder(doc.text().replace(fileDesc.getTitle(), ""));
-            } else {
-                text = new StringBuilder(p.get(index).text());
-                boolean b =
-                        StringUtils.isEmpty(text.toString().replace((char) 12288, ' ').trim())
-                                || text.toString().contains(fileDesc.getTitle())
-                                || text.toString().contains("图") && text.toString().contains("摄")
-                                || text.toString().contains("作者") && text.toString().contains("发布")
-                                || text.toString().contains("发布日期：")
-                                || text.toString().contains("发布时间：")
-                                || text.toString().contains("作者") && text.toString().contains("发表")
-                                || text.toString().contains("来源") && text.toString().contains("作者")
-                                || text.toString().contains("来源") && text.toString().contains("发布")
-                                || text.toString().contains("来源") && text.toString().contains("发表");
-                while (b) {
-                    index++;
-                    if (index >= p.size()) {
-                        index--;
-                        b = false;
-                        text = new StringBuilder();
-                    } else {
-                        text = new StringBuilder(p.get(index).text());
-                        b = StringUtils.isEmpty(text.toString().replace((char) 12288, ' ').trim())
-                                || text.toString().contains(fileDesc.getTitle())
-                                || text.toString().contains("图") && text.toString().contains("摄")
-                                || text.toString().contains("发布日期：")
-                                || text.toString().contains("发布时间：")
-                                || text.toString().contains("作者") && text.toString().contains("发布")
-                                || text.toString().contains("作者") && text.toString().contains("发表")
-                                || text.toString().contains("来源") && text.toString().contains("作者")
-                                || text.toString().contains("来源") && text.toString().contains("发布")
-                                || text.toString().contains("来源") && text.toString().contains("发表");
-                    }
-                }
+            System.err.println("直接读取------start");
+            text = new StringBuilder(fileController.getText(fileDesc.getId()));
+
+            if (StringUtils.isEmpty(text.toString().replace((char) 12288, ' ').trim())) {
+                continue;
             }
+            text = new StringBuilder(getDesc(text.toString(), fileDesc.getTitle()));
             boolean b1 = StringUtils.isEmpty(text.toString().replace((char) 12288, ' ').trim())
                     || text.toString().contains(fileDesc.getTitle())
                     || text.toString().contains("图") && text.toString().contains("摄")
@@ -242,18 +210,58 @@ public class FileControllerTest {
                     || text.toString().contains("来源") && text.toString().contains("发布")
                     || text.toString().contains("来源") && text.toString().contains("发表");
             if (b1) {
-                System.err.println("直接读取------start");
-                text = new StringBuilder(fileController.getText(fileDesc.getId()));
-            }
-            boolean flag = true;
-            while (text.length() <= 300 && flag) {
-                index++;
-                if (index >= p.size()) {
-                    flag = false;
-                    continue;
+
+                String getText = fileController.loadFileText(null, fileDesc.getId());
+                Document document = Jsoup.parseBodyFragment(getText);
+                Elements p = document.select("p");
+                if (p.size() == 0) {
+                    Document doc = Jsoup.parse(getText);
+                    text = new StringBuilder(doc.text().replace(fileDesc.getTitle(), ""));
+                } else {
+                    text = new StringBuilder(p.get(index).text());
+                    boolean b =
+                            StringUtils.isEmpty(text.toString().replace((char) 12288, ' ').trim())
+                                    || text.toString().contains(fileDesc.getTitle())
+                                    || text.toString().contains("图") && text.toString().contains("摄")
+                                    || text.toString().contains("作者") && text.toString().contains("发布")
+                                    || text.toString().contains("发布日期：")
+                                    || text.toString().contains("发布时间：")
+                                    || text.toString().contains("作者") && text.toString().contains("发表")
+                                    || text.toString().contains("来源") && text.toString().contains("作者")
+                                    || text.toString().contains("来源") && text.toString().contains("发布")
+                                    || text.toString().contains("来源") && text.toString().contains("发表");
+                    while (b) {
+                        index++;
+                        if (index >= p.size()) {
+                            index--;
+                            b = false;
+                            text = new StringBuilder();
+                        } else {
+                            text = new StringBuilder(p.get(index).text());
+                            b = StringUtils.isEmpty(text.toString().replace((char) 12288, ' ').trim())
+                                    || text.toString().contains(fileDesc.getTitle())
+                                    || text.toString().contains("图") && text.toString().contains("摄")
+                                    || text.toString().contains("发布日期：")
+                                    || text.toString().contains("发布时间：")
+                                    || text.toString().contains("作者") && text.toString().contains("发布")
+                                    || text.toString().contains("作者") && text.toString().contains("发表")
+                                    || text.toString().contains("来源") && text.toString().contains("作者")
+                                    || text.toString().contains("来源") && text.toString().contains("发布")
+                                    || text.toString().contains("来源") && text.toString().contains("发表");
+                        }
+                    }
                 }
-                text.append(p.get(index).text());
+                boolean flag = true;
+                while (text.length() <= 300 && flag) {
+                    index++;
+                    if (index >= p.size()) {
+                        flag = false;
+                        continue;
+                    }
+                    text.append(p.get(index).text());
+                }
             }
+
 
             System.out.println(text);
             System.out.println(text.length());
@@ -261,6 +269,25 @@ public class FileControllerTest {
 
 
         System.out.println("\n");
+    }
+
+    public String getDesc(String str, String title) {
+        String fileDesc = str.length() < 600 ? str : str.substring(0, 600);
+        fileDesc = fileDesc.replaceAll("\\s{2,}", " ");
+        if (!StringUtils.isEmpty(title)) {
+            fileDesc = fileDesc.replace(title.replaceAll("\\s{2,}", " "), "");
+        }
+        if (fileDesc.length() > 300) {
+            fileDesc = fileDesc.substring(0, 300);
+        }
+        if (fileDesc.contains("来源：")) {
+            fileDesc = fileDesc.substring(fileDesc.indexOf("来源："));
+        }
+        if (fileDesc.contains("发布时间：")) {
+            fileDesc = fileDesc.substring(fileDesc.indexOf("发布时间：") + 25);
+        }
+
+        return fileDesc;
     }
 
     @Data
