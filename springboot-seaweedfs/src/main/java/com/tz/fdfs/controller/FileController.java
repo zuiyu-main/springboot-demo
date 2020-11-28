@@ -12,6 +12,7 @@ import com.tz.fdfs.util.JedisUtils;
 import lombok.extern.slf4j.Slf4j;
 import net.anumbrella.seaweedfs.core.file.FileHandleStatus;
 import net.anumbrella.seaweedfs.core.http.StreamResponse;
+import net.anumbrella.seaweedfs.exception.SeaweedfsFileNotFoundException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -182,9 +183,16 @@ public class FileController {
     public void loadFileStream1(HttpServletRequest request, HttpServletResponse response,
                                 @PathVariable(value = "fid") String fid) throws IOException {
         log.info("服务器读取数据1 fid[{}]", fid);
-        StreamResponse fileStream = seaweedFileService.getFileStream(fid);
-        response.setStatus(fileStream.getHttpResponseStatusCode());
-        getResponse(response, fileStream.getInputStream());
+        try {
+            StreamResponse fileStream = seaweedFileService.getFileStream(fid);
+            response.setStatus(fileStream.getHttpResponseStatusCode());
+            getResponse(response, fileStream.getInputStream());
+        } catch (SeaweedfsFileNotFoundException e) {
+            System.out.println("eeeeeee");
+            e.printStackTrace();
+            response.setStatus(404);
+        }
+
     }
 
     /**
@@ -327,5 +335,12 @@ public class FileController {
         out.close();
     }
 
+    @GetMapping("/{fid}")
+    public void fid(HttpServletRequest request, HttpServletResponse response,
+                    @PathVariable(value = "fid") String fid) throws IOException {
+        StreamResponse fileStream = seaweedFileService.getFileStream(fid);
+        response.setStatus(fileStream.getHttpResponseStatusCode());
+        getResponse(response, fileStream.getInputStream());
+    }
 
 }
