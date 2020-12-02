@@ -39,4 +39,9 @@ public class TestController {
         return userDetails;
     }
 
+    @GetMapping("/signout/success")
+    public String signout() {
+        return "退出成功，请重新登录";
+    }
+
 }

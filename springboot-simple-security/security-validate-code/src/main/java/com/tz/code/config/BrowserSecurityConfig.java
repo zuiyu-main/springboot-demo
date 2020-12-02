@@ -26,6 +26,8 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private ValidateCodeFilter validateCodeFilter;
+    @Autowired
+    private MyLogOutSuccessHandler myLogOutSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -56,10 +58,17 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 授权配置,所有请求,都需要验证
                 .authorizeRequests()
                 .antMatchers("/authentication/require",
-                        "/login.html", "/code/sms", "/css/**",
+                        "/login.html", "/code/sms", "/css/**", "/signout", "/signout/success",
                         "/code/image").permitAll()
                 .anyRequest()
                 .authenticated()
+                .and()
+                .logout()
+                .logoutUrl("/signout")
+                // 处理成功响应 url 和 handler 保留一个
+                .logoutSuccessUrl("/signout/success")
+//                .logoutSuccessHandler(myLogOutSuccessHandler)
+                .deleteCookies("JESSIONID")
                 .and().csrf().disable();
     }
 
