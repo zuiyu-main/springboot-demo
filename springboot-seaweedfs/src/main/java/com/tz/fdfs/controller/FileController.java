@@ -335,7 +335,7 @@ public class FileController {
         out.close();
     }
 
-    @GetMapping("/{fid}")
+    @GetMapping("/fid/{fid}")
     public void fid(HttpServletRequest request, HttpServletResponse response,
                     @PathVariable(value = "fid") String fid) throws IOException {
         StreamResponse fileStream = seaweedFileService.getFileStream(fid);

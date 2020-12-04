@@ -177,8 +177,12 @@ public class FileControllerTest {
     public void getHTMLText1() throws IOException {
         List<FileDesc> ids = new ArrayList<>(10);
         FileDesc f1 = new FileDesc();
-        f1.setId("1,018375ed3927");
-        f1.setTitle("第二届民营经济法治建设峰会召开 高云龙周强张军出席");
+//        f1.setId("4,01fcea11b210da");
+//        f1.setTitle("星河滚烫，你是人间理想");
+//        f1.setTitle("目瞪口呆！最高法的这个实验室有点潮");
+//        f1.setId("2,01fceed5b335cd");
+        f1.setTitle("每日一“典”丨主债务合同变更，不加重保证人责任");
+        f1.setId("11,01ff285de6f8d7");
 //
 //        FileDesc f2 = new FileDesc();
 //        f2.setId("5,017585e2afa4");
@@ -263,7 +267,16 @@ public class FileControllerTest {
             }
 
 
+            int in = text.indexOf("“");
+            System.out.println(in);
             System.out.println(text);
+            if (text.indexOf("收录于话题") > 1 && text.indexOf("”") > 1) {
+                System.out.println(text.substring(text.indexOf("”") + 1));
+            }
+            if (text.indexOf("以下文章来源于") > 1) {
+                System.out.println(text.substring(text.indexOf("，") + 1));
+
+            }
             System.out.println(text.length());
         }
 
