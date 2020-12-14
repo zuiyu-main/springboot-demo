@@ -7,6 +7,7 @@ import org.springframework.amqp.rabbit.core.ChannelAwareMessageListener;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author https://github.com/TianPuJun @256g的胃
@@ -17,6 +18,7 @@ import java.io.IOException;
 @Component
 @Slf4j
 public class MsgHandlerService implements ChannelAwareMessageListener {
+
     /**
      * 1、处理成功，这种时候用basicAck确认消息；
      * 2、可重试的处理失败，这时候用basicNack将消息重新入列；
@@ -37,8 +39,12 @@ public class MsgHandlerService implements ChannelAwareMessageListener {
      */
     @Override
     public void onMessage(Message message, Channel channel) throws IOException {
+
         try {
 
+            String name = Thread.currentThread().getName();
+            String mqMessageContainer = name.replace("mqMessageContainer-", "");
+            Thread.currentThread().setName(mqMessageContainer);
             log.info("MsgHandlerService 线程 [{}] 监听到消息 [{}]", Thread.currentThread().getName(), new String(message.getBody()));
             int i = 1 / 0;
             log.info("i=[{}]", i);
