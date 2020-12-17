@@ -1,0 +1,20 @@
+# security.oauth2.client.client-id和security.oauth2.client.client-secret指定了客户端id和密码，这里和认证服务器里配置的client一致（另外一个客户端为app-b）；
+#  user-authorization-uri指定为认证服务器的/oauth/authorize地址，
+#  access-token-uri指定为认证服务器的/oauth/token地址，
+# jwt.key-uri指定为认证服务器的/oauth/token_key地址。
+#
+security:
+  oauth2:
+    client:
+      client-id: client1
+      client-secret: secret1
+      user-authorization-uri: http://127.0.0.1:8081/server/oauth/authorize
+      access-token-uri: http://127.0.0.1:8081/server/oauth/token
+    resource:
+      jwt:
+        key-uri: http://127.0.0.1:8081/server/oauth/token_key
+
+server:
+  port: 8082
+  servlet:
+    context-path: /client1

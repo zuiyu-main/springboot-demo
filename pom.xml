@@ -31,8 +31,11 @@
       <module>springboot-fdfs</module>
       <module>springboot-seaweedfs</module>
       <module>springboot-simple-security</module>
-      <module>springboot-simple-security</module>
-      <module>springboot-simple-security</module>
+      <module>springboot-simple-security/security-sms</module>
+      <module>springboot-simple-security/security-validate-code</module>
+      <module>springboot-sso/springboot-sso-client1</module>
+      <module>springboot-sso/springboot-sso-client2</module>
+      <module>springboot-sso</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -10,6 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
     <version>1.0-SNAPSHOT</version>
 
+    <modules>
+        <module>security-sms</module>
+        <module>security-validate-code</module>
+    </modules>
     <artifactId>springboot-simple-security</artifactId>
 
     <packaging>pom</packaging>

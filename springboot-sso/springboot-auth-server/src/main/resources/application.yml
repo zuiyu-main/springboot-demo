@@ -1,0 +1,12 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /server
+
+#security:
+#  oauth2:
+#    client:
+#      client-id: client1
+#      client-secret: secret1
+#      registered-redirect-uri: http://localhost:8081
+

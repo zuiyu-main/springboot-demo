@@ -4,24 +4,28 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.tz</groupId>
-        <artifactId>springboot-simple-security</artifactId>
+        <artifactId>springboot-sso</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>security-sms</artifactId>
+    <artifactId>sso-auth</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>security-sms</name>
-    <description>Demo project for Spring Boot</description>
+    <name>sso-auth</name>
+    <description>auth server</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-config -->
         <dependency>
-            <groupId>org.springframework.social</groupId>
-            <artifactId>spring-social-config</artifactId>
-            <version>1.1.6.RELEASE</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

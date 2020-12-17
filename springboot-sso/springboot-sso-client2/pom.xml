@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.tz</groupId>
-        <artifactId>springboot-simple-security</artifactId>
+        <artifactId>springboot-sso</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>security-sms</artifactId>
+    <artifactId>sso-client2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>security-sms</name>
+    <name>sso-client2</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -17,14 +17,8 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-config -->
-        <dependency>
-            <groupId>org.springframework.social</groupId>
-            <artifactId>spring-social-config</artifactId>
-            <version>1.1.6.RELEASE</version>
-        </dependency>
-    </dependencies>
 
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -33,5 +27,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

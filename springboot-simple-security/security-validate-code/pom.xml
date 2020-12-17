@@ -7,9 +7,9 @@
         <artifactId>springboot-simple-security</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>code</artifactId>
+    <artifactId>security-code</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>code</name>
+    <name>security-code</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
