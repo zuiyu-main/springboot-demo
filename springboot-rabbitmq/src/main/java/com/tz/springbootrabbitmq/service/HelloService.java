@@ -1,5 +1,8 @@
 package com.tz.springbootrabbitmq.service;
 
+import java.io.IOException;
+import java.util.Map;
+
 /**
  * @author liBai
  * @Classname HelloService
@@ -8,4 +11,5 @@ package com.tz.springbootrabbitmq.service;
  */
 public interface HelloService {
 
+    Map<String, Object> count() throws IOException;
 }
