@@ -213,20 +213,20 @@ java.lang.IncompatibleClassChangeError: Found class org.elasticsearch.common.byt
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019072409050498.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0MxMDQxMDY3MjU4,size_16,color_FFFFFF,t_70)
 
 * 基础配置 elasticsearch +springData
-[https://docs.spring.io/spring-data/elasticsearch/docs/3.2.0.RELEASE/reference/html/](基础配置)
+[https://docs.spring.io/spring-data/elasticsearch/docs/3.2.0.RELEASE/reference/html/](https://docs.spring.io/spring-data/elasticsearch/docs/3.2.0.RELEASE/reference/html/)
 
 * 最新配置
-[https://docs.spring.io/spring-data/elasticsearch/docs/4.0.1.RELEASE/reference/html/#elasticsearch.operations.template](最新配置)
+[https://docs.spring.io/spring-data/elasticsearch/docs/4.0.1.RELEASE/reference/html/#elasticsearch.operations.template](https://docs.spring.io/spring-data/elasticsearch/docs/4.0.1.RELEASE/reference/html/#elasticsearch.operations.template)
 
 * IK分词器的安装
 
-[https://github.com/medcl/elasticsearch-analysis-ik](注意需要与es版本一致的分词器)
+[https://github.com/medcl/elasticsearch-analysis-ik 注意需要与es版本一致的分词器](https://github.com/medcl/elasticsearch-analysis-ik)
 
 * pinyin分词器安装
 
-[https://github.com/medcl/elasticsearch-analysis-pinyin](需要与安装es版本保持一致)
+[https://github.com/medcl/elasticsearch-analysis-pinyin 需要与安装es版本保持一致](https://github.com/medcl/elasticsearch-analysis-pinyin)
 
 * 自定义 分词器 ik+pinyin
 
-[https://mp.weixin.qq.com/s/JhHBQsaQZdPL9cqPxXS2Ww](参考链接)
+[https://mp.weixin.qq.com/s/JhHBQsaQZdPL9cqPxXS2Ww](https://mp.weixin.qq.com/s/JhHBQsaQZdPL9cqPxXS2Ww)
 
