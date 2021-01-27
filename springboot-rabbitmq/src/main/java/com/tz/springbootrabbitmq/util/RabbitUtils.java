@@ -2,7 +2,6 @@ package com.tz.springbootrabbitmq.util;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.*;
@@ -15,8 +14,6 @@ import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
 
-import static com.tz.springbootrabbitmq.config.RabbitConfig.*;
-import static com.tz.springbootrabbitmq.config.RabbitConfig.TEST_QUEUE_2;
 
 /**
  * @author https://github.com/TianPuJun @醉鱼

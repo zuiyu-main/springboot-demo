@@ -41,6 +41,7 @@ public class MsgReceiver {
     )
     )
     @RabbitHandler
+//    @RabbitListener(queues = RabbitConfig.TEST_QUEUE_1)
     public void testListener(Message message, Channel channel) throws IOException {
         log.info("MsgReceiver 接收test1队列当中的消息：[{}]", new String(message.getBody()));
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);

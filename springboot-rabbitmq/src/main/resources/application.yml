@@ -29,6 +29,9 @@ spring:
     port: 5672
     username: admin
     password: admin
+    listener:
+      simple:
+        prefetch: 1
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
   configuration:
