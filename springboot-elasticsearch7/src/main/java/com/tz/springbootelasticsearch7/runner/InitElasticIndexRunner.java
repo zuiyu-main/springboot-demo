@@ -49,7 +49,7 @@ public class InitElasticIndexRunner implements CommandLineRunner {
                 RestClient.builder(
                         new HttpHost("localhost", 9200, "http")));
         // 创建索引
-//        createIndex(client);
+        createIndex(client);
         // 创建索引模版，规则test*
 //        createIndexTemp(client);
         // 创建索引模版结束，创建test_1,会使用模版的字段
@@ -102,6 +102,15 @@ public class InitElasticIndexRunner implements CommandLineRunner {
 //                builder.startObject("message");
 //                {
 //                    builder.field("type", "text");
+        // 增加测试子字段
+//                    builder.startObject("fields");
+//                    {
+//                        builder.startObject("keyword");
+//                        builder.field("ignore_above",256);
+//                        builder.field("type","keyword");
+//                        builder.endObject();
+//                    }
+//                    builder.endObject();
 //                }
 //                builder.endObject();
 //            }
