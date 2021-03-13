@@ -42,4 +42,13 @@ public class MyIndex {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    @Override
+    public String toString() {
+        return "MyIndex{" +
+                "id='" + id + '\'' +
+                ", content='" + content + '\'' +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }
