@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.anumbrella.seaweedfs.core.file.FileHandleStatus;
 import net.anumbrella.seaweedfs.core.http.StreamResponse;
 import net.anumbrella.seaweedfs.exception.SeaweedfsFileNotFoundException;
+import org.apache.http.Header;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -211,7 +212,12 @@ public class FileController {
         map.put("range", range);
         StreamResponse fileStream = seaweedFileService.loadFileBlockStream(fid, map);
         response.setStatus(fileStream.getHttpResponseStatusCode());
-        getResponse(response, fileStream.getInputStream());
+//        response.setHeader("Access-Control-Expose-Headers","*");
+//        response.setHeader("Access-Control-Max-Age","18000L");
+//        response.setHeader("Access-Control-Allow-Headers","Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers,token,access-token,Access-Token,Accept-Ranges,Range");
+        log.info("FileUploadController loadFileStream 文件返回状态吗=[{}]", fileStream.getHttpResponseStatusCode());
+        getResponse(request, response, fileStream, "fileName.pdf", 1L);
+//        getResponse(response, fileStream.getInputStream());
     }
 
     /**
@@ -341,6 +347,29 @@ public class FileController {
         StreamResponse fileStream = seaweedFileService.getFileStream(fid);
         response.setStatus(fileStream.getHttpResponseStatusCode());
         getResponse(response, fileStream.getInputStream());
+    }
+
+    public void getResponse(HttpServletRequest request, HttpServletResponse response, StreamResponse fileStream, String fileName, Long size) throws IOException {
+        InputStream inputStream = fileStream.getInputStream();
+        ServletOutputStream out = response.getOutputStream();
+        try {
+            Header[] headers = fileStream.getHeaders();
+            for (Header header : headers) {
+                response.setHeader(header.getName(), header.getValue());
+            }
+            int len = 0;
+            byte[] buffer = new byte[4096];
+            while (len != -1) {
+                len = inputStream.read(buffer);
+                out.write(buffer, 0, len);
+            }
+        } finally {
+            out.flush();
+            out.close();
+            inputStream.close();
+        }
+
+
     }
 
 }

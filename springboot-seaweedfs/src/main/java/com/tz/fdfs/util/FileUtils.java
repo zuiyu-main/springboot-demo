@@ -26,6 +26,15 @@ public class FileUtils {
     }
 
     /**
+     *                 DiskFileItem fileItem = (DiskFileItem) new DiskFileItemFactory().createItem("file",
+     *                         MediaType.IMAGE_PNG_VALUE, true, filename);
+     *                 try (OutputStream outputStream = fileItem.getOutputStream();) {
+     *                     ImageIO.write(image, "jpg", outputStream);
+     *                 } catch (IOException e) {
+     *                 }
+     *                 MultipartFile multi = new CommonsMultipartFile(fileItem);
+     */
+    /**
      * 文件分割方法
      *
      * @param targetFile 分割的文件
