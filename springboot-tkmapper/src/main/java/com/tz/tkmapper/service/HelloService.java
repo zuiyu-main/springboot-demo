@@ -11,4 +11,6 @@ public interface HelloService {
 
     String getRedisInfo();
 
+    void testTransactional();
+
 }
