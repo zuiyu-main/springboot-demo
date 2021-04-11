@@ -5,8 +5,6 @@ import com.tz.tkmapper.dao.TestSysMapper;
 import com.tz.tkmapper.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author https://github.com/TianPuJun @醉鱼
@@ -20,7 +18,7 @@ public class TestServiceImpl implements TestService {
     private TestSysMapper testSysMapper;
 
     @Override
-    @Transactional(rollbackFor = Exception.class, propagation = Propagation.NESTED)
+//    @Transactional(rollbackFor = Exception.class, propagation = Propagation.NESTED)
     public void testTransactional() {
 
         TestSys testSys = new TestSys();

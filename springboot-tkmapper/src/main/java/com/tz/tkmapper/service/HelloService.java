@@ -10,7 +10,6 @@ public interface HelloService {
     String sayHello();
 
     String getRedisInfo();
-
     void testTransactional();
 
 }
