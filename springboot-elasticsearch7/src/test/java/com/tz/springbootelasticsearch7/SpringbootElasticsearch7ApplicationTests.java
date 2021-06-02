@@ -8,7 +8,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+import org.springframework.data.elasticsearch.core.document.Document;
+import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
+import org.springframework.data.elasticsearch.core.query.IndexQuery;
+import org.springframework.data.elasticsearch.core.query.UpdateQuery;
+import org.springframework.data.elasticsearch.core.query.UpdateResponse;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.UUID;
 
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.wildcardQuery;
@@ -20,7 +27,7 @@ public class SpringbootElasticsearch7ApplicationTests {
     @Autowired
     private MyIndexDao myIndexDao;
     @Autowired
-    private ElasticsearchRestTemplate elasticsearchTemplate;
+    private ElasticsearchRestTemplate elasticsearchRestTemplate;
 
     @Test
     public void contextLoads() {
@@ -64,4 +71,36 @@ public class SpringbootElasticsearch7ApplicationTests {
 
     }
 
+    @Test
+    public void testIndexBean() {
+
+        MyIndex myIndex = new MyIndex();
+        myIndex.setId(UUID.randomUUID().toString());
+        myIndex.setTitle("title1");
+        myIndex.setContent("content1");
+
+        IndexQuery indexQuery = new IndexQuery();
+        indexQuery.setObject(myIndex);
+        indexQuery.setId(myIndex.getId());
+        IndexCoordinates indexCoordinates = IndexCoordinates.of("my_index");
+        elasticsearchRestTemplate.index(indexQuery, indexCoordinates);
+    }
+
+    @Test
+    public void testUpdateBean() {
+
+
+        Document document = Document.create();
+        document.put("title", "title-update1");
+        UpdateQuery updateQuery = UpdateQuery.builder("4eda5876-9955-4ad9-829c-00aee5938eeb")
+                .withDocument(document)
+                .withDocAsUpsert(true)
+
+                .build();
+
+        IndexCoordinates indexCoordinates = IndexCoordinates.of("my_index");
+        UpdateResponse update = elasticsearchRestTemplate.update(updateQuery, indexCoordinates);
+        UpdateResponse.Result result = update.getResult();
+        System.out.println(result.toString());
+    }
 }

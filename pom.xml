@@ -26,16 +26,21 @@
       <module>springboot-shiro</module>
       <module>springboot-redis</module>
       <module>springboot-mybatis-plus</module>
-      <module>springboot-security</module>
-      <module>springboot-simple-security</module>
-      <module>springboot-fdfs</module>
-      <module>springboot-seaweedfs</module>
-      <module>springboot-simple-security</module>
-      <module>springboot-simple-security/security-sms</module>
-      <module>springboot-simple-security/security-validate-code</module>
-      <module>springboot-sso/springboot-sso-client1</module>
-      <module>springboot-sso/springboot-sso-client2</module>
-      <module>springboot-sso</module>
+    <module>springboot-security</module>
+    <module>springboot-simple-security</module>
+    <module>springboot-fdfs</module>
+    <module>springboot-seaweedfs</module>
+    <module>springboot-simple-security</module>
+    <module>springboot-simple-security/security-sms</module>
+    <module>springboot-simple-security/security-validate-code</module>
+    <module>springboot-sso/springboot-sso-client1</module>
+    <module>springboot-sso/springboot-sso-client2</module>
+    <module>springboot-sso</module>
+    <module>springboot-activiti</module>
+    <module>springboot-es</module>
+    <module>springboot-es/transport-client</module>
+    <module>springboot-es/springboot-data</module>
+    <module>springboot-es/rest-high-client</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

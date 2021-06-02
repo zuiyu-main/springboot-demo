@@ -103,4 +103,6 @@ public class HelloServiceImpl implements HelloService {
 //            log.info("type=[{}]",jsonObject.getString("type"));
         }
     }
+
+
 }
