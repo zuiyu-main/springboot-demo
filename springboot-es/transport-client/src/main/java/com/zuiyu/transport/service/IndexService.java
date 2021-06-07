@@ -52,4 +52,5 @@ public interface IndexService {
      * @return
      */
     BulkByScrollResponse reindex(String sourceIndex, String targetIndex, QueryBuilder queryBuilder);
+
 }

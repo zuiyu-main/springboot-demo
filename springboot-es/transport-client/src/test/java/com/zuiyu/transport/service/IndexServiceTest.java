@@ -79,6 +79,8 @@ public class IndexServiceTest {
                 .field("title", "kimchy")
                 .field("time", new Date())
                 .field("content", "trying out Elasticsearch")
+                .field("birth", "1995-01-01")
+                .field("height", "180")
                 .endObject();
         IndexRequestBuilder indexRequestBuilder = transportClient.prepareIndex(EsIndexConstant.TEST_INDEX, EsIndexConstant.INDEX_TYPE, "1")
                 .setSource(xContentBuilder);
@@ -86,13 +88,26 @@ public class IndexServiceTest {
                 .startObject()
                 .field("title", "kimchy2")
                 .field("time", new Date())
-                .field("content", "trying out Elasticsearch2")
+                .field("content", "kimchy2 trying out Elasticsearch2")
+                .field("birth", "1996-01-01")
+                .field("height", "190")
                 .endObject();
         IndexRequestBuilder indexRequestBuilder2 = transportClient.prepareIndex(EsIndexConstant.TEST_INDEX, EsIndexConstant.INDEX_TYPE, "2")
                 .setSource(xContentBuilder2);
+        XContentBuilder xContentBuilder3 = jsonBuilder()
+                .startObject()
+                .field("title", "kimchy3")
+                .field("time", new Date())
+                .field("content", "kimchy3 trying out Elasticsearch3")
+                .field("birth", "1997-01-01")
+                .field("height", "185")
+                .endObject();
+        IndexRequestBuilder indexRequestBuilder3 = transportClient.prepareIndex(EsIndexConstant.TEST_INDEX, EsIndexConstant.INDEX_TYPE, "3")
+                .setSource(xContentBuilder3);
         List<IndexRequestBuilder> indexRequestBuilders = new LinkedList<>();
         indexRequestBuilders.add(indexRequestBuilder);
         indexRequestBuilders.add(indexRequestBuilder2);
+        indexRequestBuilders.add(indexRequestBuilder3);
         BulkResponse bulkItemResponses = indexService.bulkIndex(indexRequestBuilders);
         if (bulkItemResponses.hasFailures()) {
             System.out.println("批量插入有失败");

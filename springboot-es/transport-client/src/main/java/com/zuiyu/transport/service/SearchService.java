@@ -2,6 +2,8 @@ package com.zuiyu.transport.service;
 
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.get.MultiGetRequest;
+import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 
 import java.util.List;
 import java.util.Map;
@@ -30,4 +32,27 @@ public interface SearchService {
      * @return 批量查询结果
      */
     List<Map<String, Object>> multiGetById(List<MultiGetRequest.Item> items);
+
+    /**
+     * 使用scroll api 查询数据，类似游标
+     *
+     * @param queryBuilder 查询条件
+     * @param indices      索引
+     * @return
+     */
+    void usrScrollSearch(QueryBuilder queryBuilder, String... indices);
+
+    /**
+     * 批量查询
+     *
+     * @param searchRequestBuilders
+     */
+    void multiSearch(List<SearchRequestBuilder> searchRequestBuilders);
+
+    /**
+     * 聚合
+     */
+    void useAggregations();
+
+
 }
