@@ -1,0 +1,57 @@
+# datasource
+
+spring:
+  shardingsphere:
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/sharding1
+        username: root
+        password: root
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/sharding2
+        username: root
+        password: root
+    # sharding-datasource
+    sharding:
+      tables:
+        # 表名
+        position:
+          # 切分策略：database-strategy,actual-data-nodes,table-strategy,key-generator,logic-table
+          database-strategy:
+            # 行表达式格式
+            inline:
+              # 按照哪个字段
+              sharding-column: id
+              algorithm-expression: ds${id % 2}
+          key-generator:
+            column: id
+            type: ZUIYU
+        position_detail:
+          database-strategy:
+            inline:
+              sharding-column: pid
+              algorithm-expression: ds${pid % 2}
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+        b_order:
+          database-strategy:
+            inline:
+              sharding-column: company_id
+              algorithm-expression: ds$->{company_id % 2}
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: b_order${id % 2}
+          actual-data-nodes: ds${0..1}.b_order${0..1}
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+
+
+
