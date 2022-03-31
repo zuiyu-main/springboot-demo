@@ -74,6 +74,22 @@
             <artifactId>p6spy</artifactId>
             <version>3.8.6</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.80</version>
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.jasypt</groupId>-->
+        <!--            <artifactId>jasypt</artifactId>-->
+        <!--            <version>1.9.3</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.baomidou</groupId>-->
+        <!--            <artifactId>mybatis-mate-starter</artifactId>-->
+        <!--            <version>1.2.0</version>-->
+        <!--        </dependency>-->
     </dependencies>
 
     <build>

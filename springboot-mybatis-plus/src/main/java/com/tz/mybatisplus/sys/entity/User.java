@@ -11,6 +11,9 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
+//import mybatis.mate.annotation.Algorithm;
+//import mybatis.mate.annotation.FieldEncrypt;
+
 /**
  * <p>
  * 当前系统用户
@@ -28,11 +31,12 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "userId",type = IdType.AUTO)
+    @TableId(value = "user_id", type = IdType.AUTO)
     private Long userId;
 
     private String userName;
 
+    //    @FieldEncrypt(algorithm = Algorithm.RSA)
     private String fullName;
 
     private String password;
