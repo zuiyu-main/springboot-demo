@@ -16,6 +16,7 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.type.TypeHandlerRegistry;
+import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -37,6 +38,7 @@ import java.util.Properties;
 
 })
 @Slf4j
+@Component
 public class DecryptFieldInterceptor implements Interceptor {
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
