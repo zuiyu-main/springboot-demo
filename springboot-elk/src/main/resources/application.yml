@@ -2,4 +2,6 @@ server:
   port: 8080
 
 logging:
+  # 默认logback-spring.xml 使用logstash传输到es；
+  # 改为logback-spring-file.xml传输日志到归档日志文件，使用filebeat监听日志
   config: classpath:logback-spring-file.xml
