@@ -1,6 +1,7 @@
 # springboot+logStash+elasticsearch+kibana
 
 ## 版本
+
 * elasticsearch 7.4.2
 * logStash 7.4.2
 * springboot 2.1.10
@@ -174,4 +175,53 @@ https://www.elastic.co/cn/downloads/past-releases
   * 展示数据,选择Discover
 
     ![image-20220604111403630](https://s2.loli.net/2022/06/04/bLB2qv8i9cNOz36.png)
+
+
+
+
+
+# 加入filebeat
+
+* logstash  新建filebeat-logstash-log.conf
+
+  ```yaml
+  input{
+  	beats {
+          host => "192.168.123.166"
+          port => 9600
+  	}
+  }
+  
+  output{
+  	elasticsearch{
+  	    hosts=>["192.168.123.166:9200"]
+  	    index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+      }
+  }
+  ```
+
+  
+
+* 启动
+
+  ```text
+  bin/logstash -f filebeat-logstash-log.conf
+  ```
+
+* Filebeat 修改配置文件,找到下方修改的地方修改即可，主要监听的日志文件和输出的logstash服务器地址
+
+  ```yaml
+  filebeat.inputs:
+  
+  - type: log
+    enabled: true
+    paths:
+      - /cxt/codework/java/springboot-demo/logs/springboot-elk/2022-06-04/info.2022-06-04.0.log
+  setup.kibana:
+    Host: "192.168.123.166:5601"
+  #----------------------------- Logstash output --------------------------------
+  output.logstash:
+    # The Logstash hosts
+    hosts: ["192.168.123.166:9600"]
+  ```
 

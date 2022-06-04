@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
     public static final Logger log = LoggerFactory.getLogger(TestController.class);
-
     @RequestMapping("/test")
     public String test() {
         log.info("this is a log from springboot");

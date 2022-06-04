@@ -1,3 +1,5 @@
 server:
   port: 8080
 
+logging:
+  config: classpath:logback-spring-file.xml

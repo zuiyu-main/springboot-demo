@@ -34,7 +34,7 @@ public class ElasticConfig {
         TransportClient client = new PreBuiltTransportClient(settings);
         client.addTransportAddress(new TransportAddress(InetAddress.getByName(elasticsearchProperties.getHost()), elasticsearchProperties.getPort()));
         LOGGER.info("Elasticsearch connection success Host:[{}],Port:[{}]", elasticsearchProperties.getHost(), elasticsearchProperties.getPort());
-        LOGGER.info("Elasticsearch connection success clusterName:[{}])", elasticsearchProperties.getClusterName());
+        LOGGER.info("Elasticsearch connection success clusterName:[{}]", elasticsearchProperties.getClusterName());
         return client;
     }
 

@@ -3,7 +3,7 @@
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <!--配置logStash 服务地址-->
-        <destination>192.168.123.166:9600</destination>
+        <destination>192.168.123.166:9500</destination>
         <!-- 日志输出编码 -->
         <encoder charset="UTF-8"
                  class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">

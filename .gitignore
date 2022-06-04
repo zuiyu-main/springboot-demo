@@ -1,2 +1,5 @@
 .idea/
 .mvn/
+/logs/
+/logs/springboot-elk/2022-06-04/
+2022-06-04/
