@@ -51,7 +51,7 @@ public class LicenseCheckListener implements ApplicationListener<ContextRefreshe
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        //root application context 没有parent
+        // root application context 没有parent
         ApplicationContext context = event.getApplicationContext().getParent();
         if (context == null) {
             if (StringUtils.isNotBlank(licensePath)) {

@@ -23,7 +23,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-        //添加要拦截的url
+        // 添加要拦截的url
         registry.addInterceptor(licenseCheckInterceptor)
                 // 拦截的路径
                 .addPathPatterns("/**");
