@@ -28,8 +28,8 @@ public abstract class AbstractServerInfos {
         try {
             result.setIpAddress(this.getIpAddress());
             result.setMacAddress(this.getMacAddress());
-//            result.setCpuSerial(this.getCPUSerial());
-//            result.setMainBoardSerial(this.getMainBoardSerial());
+            result.setCpuSerial(this.getCPUSerial());
+            result.setMainBoardSerial(this.getMainBoardSerial());
         } catch (Exception e) {
             log.error("获取服务器硬件信息失败", e);
         }

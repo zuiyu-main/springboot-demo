@@ -142,22 +142,22 @@ public class CustomLicenseManager extends LicenseManager {
 
             if (serverCheckModel != null) {
                 //校验IP地址
-                if (!checkIpAddress(expectedCheckModel.getIpAddress(), serverCheckModel.getIpAddress())) {
+                if (expectedCheckModel.getCheckIp() && !checkIpAddress(expectedCheckModel.getIpAddress(), serverCheckModel.getIpAddress())) {
                     throw new LicenseContentException("当前服务器的IP没在授权范围内");
                 }
 
                 //校验Mac地址
-                if (!checkIpAddress(expectedCheckModel.getMacAddress(), serverCheckModel.getMacAddress())) {
+                if (expectedCheckModel.getCheckMac() && !checkIpAddress(expectedCheckModel.getMacAddress(), serverCheckModel.getMacAddress())) {
                     throw new LicenseContentException("当前服务器的Mac地址没在授权范围内");
                 }
 
                 //校验主板序列号
-                if (!checkSerial(expectedCheckModel.getMainBoardSerial(), serverCheckModel.getMainBoardSerial())) {
+                if (expectedCheckModel.getCheckMainBoard() && !checkSerial(expectedCheckModel.getMainBoardSerial(), serverCheckModel.getMainBoardSerial())) {
                     throw new LicenseContentException("当前服务器的主板序列号没在授权范围内");
                 }
 
                 //校验CPU序列号
-                if (!checkSerial(expectedCheckModel.getCpuSerial(), serverCheckModel.getCpuSerial())) {
+                if (expectedCheckModel.getCheckCpu() && !checkSerial(expectedCheckModel.getCpuSerial(), serverCheckModel.getCpuSerial())) {
                     throw new LicenseContentException("当前服务器的CPU序列号没在授权范围内");
                 }
             } else {

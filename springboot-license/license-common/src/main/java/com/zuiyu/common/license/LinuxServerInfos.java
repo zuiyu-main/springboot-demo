@@ -54,6 +54,9 @@ public class LinuxServerInfos extends AbstractServerInfos {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
+        if (null == reader.readLine()) {
+            return serialNumber;
+        }
         String line = reader.readLine().trim();
         if (StringUtils.isNotBlank(line)) {
             serialNumber = line;
@@ -74,7 +77,9 @@ public class LinuxServerInfos extends AbstractServerInfos {
         process.getOutputStream().close();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-
+        if (null == reader.readLine()) {
+            return serialNumber;
+        }
         String line = reader.readLine().trim();
         if (StringUtils.isNotBlank(line)) {
             serialNumber = line;
