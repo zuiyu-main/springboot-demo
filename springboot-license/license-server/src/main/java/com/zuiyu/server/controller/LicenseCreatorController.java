@@ -4,9 +4,9 @@ package com.zuiyu.server.controller;
 import com.zuiyu.common.bean.LicenseCheckModel;
 import com.zuiyu.common.bean.LicenseCreatorParam;
 import com.zuiyu.common.license.AbstractServerInfos;
+import com.zuiyu.common.license.LicenseCreator;
 import com.zuiyu.common.license.LinuxServerInfos;
 import com.zuiyu.common.license.WindowsServerInfos;
-import com.zuiyu.server.license.LicenseCreator;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,7 +71,30 @@ public class LicenseCreatorController {
     /**
      * 生成证书
      *
-     * @param param 生成证书需要的参数，如：{"subject":"ccx-models","privateAlias":"privateKey","keyPass":"5T7Zz5Y0dJFcqTxvzkH5LDGJJSGMzQ","storePass":"3538cef8e7","licensePath":"C:/Users/zifangsky/Desktop/license.lic","privateKeysStorePath":"C:/Users/zifangsky/Desktop/privateKeys.keystore","issuedTime":"2018-04-26 14:48:12","expiryTime":"2018-12-31 00:00:00","consumerType":"User","consumerAmount":1,"description":"这是证书描述信息","licenseCheckModel":{"ipAddress":["192.168.245.1","10.0.5.22"],"macAddress":["00-50-56-C0-00-01","50-7B-9D-F9-18-41"],"cpuSerial":"BFEBFBFF000406E3","mainBoardSerial":"L1HF65E00X9"}}
+     * @param param 生成证书需要的参数，
+     *              {
+     *              "subject": "zuiyu_demo",
+     *              "privateAlias": "zuiyuPrivateKey",
+     *              "keyPass": "zuiyu_private_password_1234",
+     *              "storePass": "zuiyu_public_password_1234",
+     *              "licensePath": "/Users/cxt/Downloads/license/license7.lic",
+     *              "privateKeysStorePath": "/Users/cxt/Downloads/license/privateKeys.keystore",
+     *              "issuedTime": "2018-07-10 00:00:01",
+     *              "expiryTime": "2022-12-31 23:59:59",
+     *              "consumerType": "User",
+     *              "consumerAmount": 1,
+     *              "description": "这是证书描述信息",
+     *              "licenseCheckModel": {
+     *              "checkIp":false,
+     *              "ipAddress": [""],
+     *              "checkMac":true,
+     *              "macAddress": ["aa-bb-cc-11"],
+     *              "checkCpu":false,
+     *              "cpuSerial": "",
+     *              "checkMainBoard":false,
+     *              "mainBoardSerial": ""
+     *              }
+     *              }
      * @return java.util.Map<java.lang.String, java.lang.Object>
      */
     @RequestMapping(value = "/generateLicense", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})

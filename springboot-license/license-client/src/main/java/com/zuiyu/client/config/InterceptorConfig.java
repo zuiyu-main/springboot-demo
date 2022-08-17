@@ -1,7 +1,6 @@
 package com.zuiyu.client.config;
 
 import com.zuiyu.client.interceptor.LicenseCheckInterceptor;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -14,7 +13,6 @@ import javax.annotation.Resource;
  * @description
  * @link https://github.com/zuiyu-main
  */
-@Configuration
 @Component
 public class InterceptorConfig implements WebMvcConfigurer {
     @Resource

@@ -1,0 +1,51 @@
+.
+├── HELP.md
+├── README.md
+├── license
+│   └── zuiyuPublicCerts.keystore
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── zuiyu
+│   │   │           └── client
+│   │   │               ├── LicenseClientApplication.java
+│   │   │               ├── config
+│   │   │               │   └── InterceptorConfig.java
+│   │   │               ├── controller
+│   │   │               │   └── LoginController.java
+│   │   │               ├── interceptor
+│   │   │               │   └── LicenseCheckInterceptor.java
+│   │   │               └── license
+│   │   │                   └── LicenseCheckListener.java
+│   │   └── resources
+│   │       └── application.properties
+│   └── test
+│       └── java
+│           └── com
+│               └── zuiyu
+│                   └── client
+│                       └── LicenseClientApplicationTests.java
+├── target
+│   ├── classes
+│   │   ├── application.properties
+│   │   └── com
+│   │       └── zuiyu
+│   │           └── client
+│   │               ├── LicenseClientApplication.class
+│   │               ├── config
+│   │               │   └── InterceptorConfig.class
+│   │               ├── controller
+│   │               │   └── LoginController.class
+│   │               ├── interceptor
+│   │               │   └── LicenseCheckInterceptor.class
+│   │               └── license
+│   │                   └── LicenseCheckListener.class
+│   └── generated-sources
+│       └── annotations
+└── tree.txt
+
+28 directories, 20 files

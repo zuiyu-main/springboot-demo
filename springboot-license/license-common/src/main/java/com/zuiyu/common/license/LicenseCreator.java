@@ -1,8 +1,6 @@
-package com.zuiyu.server.license;
+package com.zuiyu.common.license;
 
 import com.zuiyu.common.bean.LicenseCreatorParam;
-import com.zuiyu.common.license.CustomKeyStoreParam;
-import com.zuiyu.common.license.CustomLicenseManager;
 import de.schlichtherle.license.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

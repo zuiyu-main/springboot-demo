@@ -118,8 +118,7 @@ public abstract class AbstractServerInfos {
 
             return stringBuffer.toString().toUpperCase();
         } catch (SocketException e) {
-            e.printStackTrace();
-            log.error("获取某个网络接口的Mac地址异常", e.getMessage());
+            log.error("获取某个网络接口的Mac地址异常", e);
         }
 
         return null;
