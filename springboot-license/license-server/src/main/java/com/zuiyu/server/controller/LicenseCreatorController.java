@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +37,9 @@ public class LicenseCreatorController {
      */
     @Value("${license.licensePath}")
     private String licensePath;
+
+    @Value("${license.privateKeysStorePath}")
+    private String privateKeysStorePath;
 
     /**
      * 获取服务器硬件信息
@@ -71,13 +75,15 @@ public class LicenseCreatorController {
      * @return java.util.Map<java.lang.String, java.lang.Object>
      */
     @RequestMapping(value = "/generateLicense", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-    public Map<String, Object> generateLicense(@RequestBody LicenseCreatorParam param) {
+    public Map<String, Object> generateLicense(HttpServletRequest request, @RequestBody LicenseCreatorParam param) {
         Map<String, Object> resultMap = new HashMap<>(2);
 
         if (StringUtils.isBlank(param.getLicensePath())) {
             param.setLicensePath(licensePath);
         }
 
+        String path = System.getProperty("user.dir") + privateKeysStorePath;
+        param.setPrivateKeysStorePath(path);
         LicenseCreator licenseCreator = new LicenseCreator(param);
         boolean result = licenseCreator.generateLicense();
 

@@ -62,8 +62,7 @@ public class LicenseCheckListener implements ApplicationListener<ContextRefreshe
                 param.setPublicAlias(publicAlias);
                 param.setStorePass(storePass);
                 param.setLicensePath(licensePath);
-                param.setPublicKeysStorePath(publicKeysStorePath);
-
+                param.setPublicKeysStorePath(System.getProperty("user.dir") + publicKeysStorePath);
                 LicenseVerify licenseVerify = new LicenseVerify();
                 //安装证书
                 licenseVerify.install(param);
