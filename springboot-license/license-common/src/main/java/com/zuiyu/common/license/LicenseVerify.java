@@ -33,6 +33,7 @@ public class LicenseVerify {
             log.info(MessageFormat.format("证书安装成功，证书有效期：{0} - {1}", format.format(result.getNotBefore()), format.format(result.getNotAfter())));
         } catch (Exception e) {
             log.error("证书安装失败！", e);
+            System.exit(0);
         }
 
         return result;
