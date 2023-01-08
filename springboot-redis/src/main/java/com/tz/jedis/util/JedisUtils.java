@@ -202,6 +202,16 @@ public class JedisUtils {
         }
     }
 
+    public static Long hdel(String key, String hashKey, int indexDb) {
+        try (Jedis jedis = jedisUtils.jedisPool.getResource()) {
+            jedis.select(indexDb);
+            return jedis.hdel(key, hashKey);
+        } catch (Exception e) {
+            log.error("jedis hexists error [{}]", e.getMessage());
+            return Long.valueOf("-1");
+        }
+    }
+
     /**
      * 根据排序获取分页数据，修改min，max可以在某一个区间选择
      *

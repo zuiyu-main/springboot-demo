@@ -7,7 +7,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-license</name>
     <description>license-client</description>
-
+    <packaging>pom</packaging>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.5.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,6 +21,11 @@
         <spring-boot.version>2.1.18.RELEASE</spring-boot.version>
     </properties>
 
+    <modules>
+        <module>license-common</module>
+        <module>license-server</module>
+        <module>license-client</module>
+    </modules>
     <dependencies>
 
     </dependencies>

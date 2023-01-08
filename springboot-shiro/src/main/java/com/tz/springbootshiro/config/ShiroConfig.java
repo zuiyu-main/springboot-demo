@@ -1,7 +1,7 @@
 package com.tz.springbootshiro.config;
 
-import com.oracle.tools.packager.Log;
 import com.tz.springbootshiro.realm.MyRealm;
+import lombok.extern.java.Log;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authc.pam.AuthenticationStrategy;
 import org.apache.shiro.authc.pam.FirstSuccessfulStrategy;
@@ -23,8 +23,10 @@ import java.util.Map;
  * @Description shiro 配置
  * @Date 2019-11-10 09:23
  */
+@Log
 @SpringBootConfiguration
 public class ShiroConfig {
+
     /**
      * 凭证匹配器
      * （由于我们的密码校验交给Shiro的SimpleAuthenticationInfo进行处理了
@@ -55,7 +57,7 @@ public class ShiroConfig {
      */
     @Bean(name = "authenticationStrategy")
     public AuthenticationStrategy authenticationStrategy() {
-        Log.info("----------->>>>>>>>>>>>ShiroConfiguration.authenticationStrategy()");
+        log.info("----------->>>>>>>>>>>>ShiroConfiguration.authenticationStrategy()");
         return new FirstSuccessfulStrategy();
     }
 
